@@ -170,7 +170,8 @@ while (paperHeight < height) {
 System.out.println("折叠了" + count + "次");  
 System.out.println("最终的纸张高度为" + paperHeight + "mm");
 ```
-
+- **特点**  
+	
 ### do...while循环
 先执行do对应的语句块，然后再判断循环条件，只要循环条件满足，则一直执行循环体，否则结束循环。
 - **语法**  
