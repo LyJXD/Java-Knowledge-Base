@@ -6,27 +6,31 @@
 所有的条件表达式结果都是boolean类型。
 #### 单分支语句
 - **语法**  
-	if(条件表达式){  
-		语句块;  
-	}
+```
+if(条件表达式) {  
+	语句块;  
+}
+```
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);  
 int a = sc.nextInt();
 int b = sc.nextInt();
 
-if(a > b){	
+if(a > b) {	
 	System.out.println("a 大于 b");
 }
 ```
 
 #### 双分支语句
 - **语法**  
-	if(条件表达式){  
-		语句块A;  
-	}else{  
-		语句块B;  
-	}
+```
+if(条件表达式){  
+	语句块A;  
+}else{  
+	语句块B;  
+}
+```
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);  
@@ -41,17 +45,19 @@ if(num % 2 == 0) {
 
 #### 多分支语句
 - **语法**  
-	if(条件表达式A){  
-		语句块A;  
-	}else if(条件表达式B){  
-		语句块B;  
-	}  
-	…  
-	else if(条件表达式N){  
-		语句块N;  
-	}else{  
-		语句块N+1  
-	}
+```
+if(条件表达式A) {  
+	语句块A;  
+}else if(条件表达式B) {  
+	语句块B;  
+}  
+...
+else if(条件表达式N) {  
+	语句块N;  
+}else {  
+	语句块N+1  
+}
+```
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);  
@@ -69,23 +75,25 @@ if ( score >= 90 ) {
 ```
 ### switch分支语句
 - **语法**  
-	switch(表达式){  
-		case 值1:  
-			语句块1;  
-			break;  
-		...  
-		case 值N:  
-			语句块N;  
-			break;  
-		default:  
-			语句块default;  
-    }        
+```
+switch(表达式) {  
+	case 值1:  
+		语句块1;  
+		break;  
+	...  
+	case 值N:  
+		语句块N;  
+		break;  
+	default:  
+		语句块default;  
+} 
+```       
 - **示例**
 ```
  Scanner sc = new Scanner(System.in);
 	System.out.println("只能输入1,2,3：");
 	int a = sc.nextInt();
-	switch(a){
+	switch(a) {
 		case 1:
 			System.out.println("one");
 			break;
