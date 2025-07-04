@@ -7,8 +7,8 @@
 #### 单分支语句
 - **语法**  
 ```
-if(条件表达式) {  
-	语句块;  
+if(条件表达式) {
+	语句块;
 }
 ```
 - **示例**
@@ -17,7 +17,7 @@ Scanner sc = new Scanner(System.in);
 int a = sc.nextInt();
 int b = sc.nextInt();
 
-if(a > b) {	
+if(a > b) {
 	System.out.println("a 大于 b");
 }
 ```
@@ -25,86 +25,86 @@ if(a > b) {
 #### 双分支语句
 - **语法**  
 ```
-if(条件表达式){  
-	语句块A;  
-}else{  
-	语句块B;  
+if(条件表达式){
+	语句块A;
+}else{
+	语句块B;
 }
 ```
 - **示例**
 ```
-Scanner sc = new Scanner(System.in);  
-int num = sc.nextInt();  
+Scanner sc = new Scanner(System.in);
+int num = sc.nextInt();
 
-if(num % 2 == 0) {  
-    System.out.println(num + " is even");  
-}else {  
-    System.out.println(num + " is odd");  
+if(num % 2 == 0) {
+    System.out.println(num + " is even");
+}else {
+    System.out.println(num + " is odd");
 }
 ```
 
 #### 多分支语句
 - **语法**  
 ```
-if(条件表达式A) {  
-	语句块A;  
-}else if(条件表达式B) {  
-	语句块B;  
-}  
+if(条件表达式A) {
+	语句块A;
+}else if(条件表达式B) {
+	语句块B;
+}
 ...
-else if(条件表达式N) {  
-	语句块N;  
-}else {  
-	语句块N+1  
+else if(条件表达式N) {
+	语句块N;
+}else {
+	语句块N+1
 }
 ```
 - **示例**
 ```
-Scanner sc = new Scanner(System.in);  
-int score = sc.nextInt();  
+Scanner sc = new Scanner(System.in);
+int score = sc.nextInt();
  
-if ( score >= 90 ) {    
+if ( score >= 90 ) {
     System.out.println("优秀");
-} else if (score >= 80 ) {    
+} else if (score >= 80 ) {
     System.out.println("良好");
-} else if (score >= 60 ) {    
+} else if (score >= 60 ) {
     System.out.println("中等");
-} else {    
+} else {
     System.out.println("不及格");
 }
 ```
 ### switch分支语句
 - **语法**  
 ```
-switch(表达式) {  
-	case 值1:  
-		语句块1;  
-		break;  
-	...  
-	case 值N:  
-		语句块N;  
-		break;  
-	default:  
-		语句块default;  
+switch(表达式) {
+	case 值1:
+		语句块1;
+		break;
+	...
+	case 值N:
+		语句块N;
+		break;
+	default:
+		语句块default;
 } 
 ```       
 - **示例**
 ```
- Scanner sc = new Scanner(System.in);
-	System.out.println("只能输入1,2,3：");
-	int a = sc.nextInt();
-	switch(a) {
-		case 1:
-			System.out.println("one");
-			break;
-		case 2:
-			System.out.println("two");
-			break;
-		case 3:
-			System.out.println("three");
-			break;
-		default:
-			System.out.println("输入错误,请重新输入");
+Scanner sc = new Scanner(System.in);
+System.out.println("只能输入1,2,3：");
+int a = sc.nextInt();
+switch(a) {
+	case 1:
+		System.out.println("one");
+		break;
+	case 2:
+		System.out.println("two");
+		break;
+	case 3:
+		System.out.println("three");
+		break;
+	default:
+		System.out.println("输入错误,请重新输入");
 ```
 ## 循环结构
 ### for循环
