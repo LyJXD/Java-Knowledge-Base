@@ -122,3 +122,6 @@ for (int x = 0; x < 10; x++) {
 }  
 System.out.println(sum);
 ```
+### while循环
+
+### do...while循环
