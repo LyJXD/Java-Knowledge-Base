@@ -1,6 +1,5 @@
 Java Development Kit
 Java开发工具。JDK用于开发Java应用程序的一套完整的软件开发工具。JDK是Java技术的核心部分，包括了Java运行环境（[[JRE]]）、Java工具（如javac、java、javap等）以及Java基础类库（例如rt.jar）。JDK允许开发者编写、编译、调试和运行Java应用程序。
-
 ### JDK的主要组成部分
 
 - **Java编译器** 将Java源代码转换成字节码。
