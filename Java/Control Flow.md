@@ -74,6 +74,7 @@ if ( score >= 90 ) {
 ```
 
 ### switch分支语句
+switch(值)，值的取值类型可以是byte、short、int、char、string
 - **语法**  
 ```
 switch(表达式) {
@@ -105,6 +106,28 @@ switch(a) {
         break;  
     default:  
         System.out.println("输入错误,请重新输入");
+```
+- **穿透现象**  
+	当一个case分支没有[[#break]]语句时，即使该case分支的条件满足，程序也会继续执行下一个case分支的代码，直到遇到break语句或switch语句结束。
+- **示例**
+```
+Scanner sc = new Scanner(System.in);  
+System.out.println("Enter date you want to check:");  
+int day = sc.nextInt();  
+switch (day) {  
+    case 1:  
+    case 2:  
+    case 3:  
+    case 4:  
+    case 5:  
+        System.out.println("今天是星期" + day + "，是工作日");  
+        break;  
+    case 6:  
+    case 7:  
+        System.out.println("今天是星期" + day + "，是休息日");  
+        break;  
+    default:  
+        System.out.println("非法输入");
 ```
 
 ## 循环结构
