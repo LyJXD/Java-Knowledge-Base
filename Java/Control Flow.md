@@ -1,6 +1,7 @@
 ## 顺序结构
 顺序结构是程序中最简单最基本的流程控制，没有特定的语法结构，按照代码的先后顺序，依次执行，程序中大多数的代码都是这样执行的。
 总的来说：程序按照从上到下的顺序执行。
+
 ## 分支结构
 ### if分支语句
 所有的条件表达式结果都是boolean类型。
@@ -21,7 +22,6 @@ if(a > b) {
     System.out.println("a 大于 b");  
 }
 ```
-
 #### 双分支语句
 - **语法**  
 ```
@@ -42,7 +42,6 @@ if(num % 2 == 0) {
     System.out.println(num + " is odd");  
 }
 ```
-
 #### 多分支语句
 - **语法**  
 ```
@@ -73,6 +72,7 @@ if ( score >= 90 ) {
     System.out.println("不及格");  
 }
 ```
+
 ### switch分支语句
 - **语法**  
 ```
@@ -106,6 +106,7 @@ switch(a) {
     default:  
         System.out.println("输入错误,请重新输入");
 ```
+
 ## 循环结构
 ### for循环
 - **语法**  
@@ -122,9 +123,32 @@ for (int x = 0; x < 10; x++) {
 }  
 System.out.println(sum);
 ```
+
 ### while循环
+条件表达式返回值类型为boolean类型，只要条件表达式的结果为true,则一直执行语句块。
+- **语法**
+```
+while (循环条件部分){  
+    循环体部分;   
+	迭代部分;  
+}
+```
+- **示例**
+```
+double height = 8848860.0;  
+double paperHeight = 0.1;  
+  
+int count = 0;  
+while (paperHeight < height) {  
+    paperHeight *= 2;  
+    count++;  
+}  
+System.out.println("折叠了" + count + "次");  
+System.out.println("最终的纸张高度为" + paperHeight + "mm");
+```
 
 ### do...while循环
+先执行do对应的语句块，然后再判断循环条件，只要循环条件满足，则一直执行循环体，否则结束循环。
 - **语法**  
 ```
 do {  
@@ -134,5 +158,14 @@ do {
 ```
 - **示例**  
 ```
-
+Scanner sc = new Scanner(System.in);  
+String answer = "";  
+do {  
+    System.out.println("上机编写程序！");  
+    System.out.print("合格了吗?(y/n)");  
+    answer = sc.next();  
+    System.out.println("");  
+} while (!"y".equals(answer));  
+  
+System.out.println("恭喜你通过了测试！");
 ```
