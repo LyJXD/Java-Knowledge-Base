@@ -14,11 +14,11 @@ if(条件表达式) {
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);  
-int a = sc.nextInt();
-int b = sc.nextInt();
-
-if(a > b) {
-	System.out.println("a 大于 b");
+int a = sc.nextInt();  
+int b = sc.nextInt();  
+  
+if(a > b) {  
+    System.out.println("a 大于 b");  
 }
 ```
 
@@ -34,12 +34,12 @@ if(条件表达式){
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);
-int num = sc.nextInt();
-
-if(num % 2 == 0) {
-    System.out.println(num + " is even");
-}else {
-    System.out.println(num + " is odd");
+int num = sc.nextInt();  
+  
+if(num % 2 == 0) {  
+    System.out.println(num + " is even");  
+}else {  
+    System.out.println(num + " is odd");  
 }
 ```
 
@@ -61,16 +61,16 @@ else if(条件表达式N) {
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);
-int score = sc.nextInt();
- 
-if ( score >= 90 ) {
-    System.out.println("优秀");
-} else if (score >= 80 ) {
-    System.out.println("良好");
-} else if (score >= 60 ) {
-    System.out.println("中等");
-} else {
-    System.out.println("不及格");
+int score = sc.nextInt();  
+  
+if ( score >= 90 ) {  
+    System.out.println("优秀");  
+} else if (score >= 80 ) {  
+    System.out.println("良好");  
+} else if (score >= 60 ) {  
+    System.out.println("中等");  
+} else {  
+    System.out.println("不及格");  
 }
 ```
 ### switch分支语句
@@ -90,21 +90,35 @@ switch(表达式) {
 ```       
 - **示例**
 ```
-Scanner sc = new Scanner(System.in);
-System.out.println("只能输入1,2,3：");
-int a = sc.nextInt();
-switch(a) {
-	case 1:
-		System.out.println("one");
-		break;
-	case 2:
-		System.out.println("two");
-		break;
-	case 3:
-		System.out.println("three");
-		break;
-	default:
-		System.out.println("输入错误,请重新输入");
+Scanner sc = new Scanner(System.in);  
+System.out.println("只能输入1,2,3：");  
+int a = sc.nextInt();  
+switch(a) {  
+    case 1:  
+        System.out.println("one");  
+        break;  
+    case 2:  
+        System.out.println("two");  
+        break;  
+    case 3:  
+        System.out.println("three");  
+        break;  
+    default:  
+        System.out.println("输入错误,请重新输入");
 ```
 ## 循环结构
 ### for循环
+- **语法**  
+```
+for (初始化循环条件; 循环条件表达式; 迭代部分 ){  
+    循环操作(循环体);  
+}
+```
+- **示例**  
+```
+int sum = 0;  
+for (int x = 0; x < 10; x++) {  
+    sum += x;  
+}  
+System.out.println(sum);
+```
