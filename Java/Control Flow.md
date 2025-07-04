@@ -68,5 +68,34 @@ if ( score >= 90 ) {
 }
 ```
 ### switch分支语句
-
+- **语法**
+	switch(表达式){
+		case 值1:
+			语句块1;
+			break;
+		...
+		case 值N:
+			语句块N;
+			break;
+		default: 
+			语句块default;
+    }        
+- **示例**
+```
+ Scanner sc = new Scanner(System.in);
+	System.out.println("只能输入1,2,3：");
+	int a = sc.nextInt();
+	switch(a){
+		case 1:
+			System.out.println("one");
+			break;
+		case 2:
+			System.out.println("two");
+			break;
+		case 3:
+			System.out.println("three");
+			break;
+		default:
+			System.out.println("输入错误,请重新输入");
+```
 ## 循环结构
