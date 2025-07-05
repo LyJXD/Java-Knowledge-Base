@@ -10,12 +10,12 @@ dataType[] arrayName;
 - **arrayName**  
 	它是一个标识符
 ### 初始化数组
-- **静态创建**  
+- **静态初始化**  
 ```
 int[] array = new int[5]{1, 2, 3, 4, 5};
 ```
 一旦定义了数组的长度，就不能在程序中对其进行更改。
-- **动态创建**  
+- **动态初始化**  
 ```
 Scanner sc = new Scanner(System.in);  
 
