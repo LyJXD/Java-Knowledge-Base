@@ -1,2 +1,2 @@
-Java Platform Micro Edition
+## Java Platform Micro Edition
 Java 平台微型版，主要面向移动设备和嵌入式设备，如手机、PDA、电视机顶盒等。它提供了在资源受限设备上运行Java应用程序的能力，为移动设备的应用程序提供了一个健壮且灵活的环境。JavaME的出现，使得开发者可以在不同的设备上开发出具有统一风格和体验的应用程序。

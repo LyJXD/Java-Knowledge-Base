@@ -1,3 +1,3 @@
-Java Platform Standard Edition 
+## Java Platform Standard Edition 
 Java 平台标准版，Java编程语言的基础，它包含了支持Java应用程序开发和运行的核心类库以及虚拟机等核心组件。是Java技术的核心和基础，提供Java语言的核心功能（如集合框架、多线程、网络编程等），适用于开发桌面应用、命令行工具或小型独立程序。Java SE包括了Java语言的核心类，如数据库连接、接口定义、输入输出、网络编程等，满足了日常开发的大部分需求。此外，Java SE也是[[Java EE]]和[[Java ME]]的基础，为它们提供了公共的类和API。
 
