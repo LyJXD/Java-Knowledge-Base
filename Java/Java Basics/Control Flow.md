@@ -74,7 +74,6 @@ if ( score >= 90 ) {
 ```
 
 ### switch分支语句
-switch(值)，值的取值类型可以是byte、short、int、char、string
 - **语法**  
 ```
 switch(表达式) {
@@ -89,6 +88,7 @@ switch(表达式) {
 		语句块default;
 } 
 ```       
+switch(值)，值的取值类型可以是byte、short、int、char、string
 - **示例**
 ```
 Scanner sc = new Scanner(System.in);  
