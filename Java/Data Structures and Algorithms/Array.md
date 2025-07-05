@@ -35,7 +35,7 @@ for (int i = 0; i < arr.length; i++){
 int[] age = new int[5];  
   
 //使用for循环访问元素  
-for (int i = 0; i < 5; ++i) {  
+for (int i = 0; i < age.length - 1; ++i) {  
     System.out.println(age[i]);  
 }
 ```
