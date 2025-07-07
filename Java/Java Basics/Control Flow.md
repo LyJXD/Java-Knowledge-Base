@@ -72,7 +72,6 @@ if ( score >= 90 ) {
     System.out.println("不及格");  
 }
 ```
-
 ### switch分支语句
 - **语法**  
 ```
