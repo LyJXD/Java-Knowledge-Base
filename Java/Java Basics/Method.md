@@ -48,24 +48,35 @@ Java支持两种调用方法的方式，根据方法是否返回值来选择。
 当方法返回一个值的时候，方法调用通常被当做一个值。
 - **示例** 
 ```
-public class TestMax {
-   /** 主方法 */
-   public static void main(String[] args) {
-      int i = 5;
-      int j = 2;
-      int k = max(i, j);
-      System.out.println( i + " 和 " + j + " 比较，最大值是：" + k);
-   }
- 
-   /** 返回两个整数变量较大的值 */
-   public static int max(int num1, int num2) {
-      int result;
-      if (num1 > num2)
-         result = num1;
-      else
-         result = num2;
- 
-      return result; 
-   }
+public class MethodDemo {    
+	public static void main(String[] args) {  
+	    int i = 5;  
+	    int j = 2;  
+	    int k = max(i, j);  
+	    System.out.println( i + " 和 " + j + " 比较，最大值是：" + k);  
+	}
+	
+    public static int max(int num1, int num2) {  
+        int result;  
+        if (num1 > num2) {  
+            result = num1;  
+        } else {  
+            result = num2;  
+        }  
+        return result;  
+    }  
+}
+```
+如果方法返回值是void，方法调用一定是一条语句。
+- **示例**  
+```
+public class MethodDemo {  
+    public static void main(String[] args) {  
+        print();  
+    }  
+    
+    public static void print() {  
+        System.out.println("hello world");  
+    }  
 }
 ```
