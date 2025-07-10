@@ -85,3 +85,5 @@ public class Person{
 // 主方法的格式为固定句式
 public static void main(String[] args)
 ```
+
+## 实体类 JavaBean
