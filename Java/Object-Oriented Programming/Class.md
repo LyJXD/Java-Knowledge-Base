@@ -86,4 +86,9 @@ public class Person{
 public static void main(String[] args)
 ```
 
-## 实体类 JavaBean
+## 实体类
+### JavaBean
+- **定义**  
+	JavaBean是一种遵循特定命名规范的Java类，主要用于封装([[Encapsulation]])数据并进行组件间的数据传递。
+- **规则**  
+	1. 有一个无参构造方法
