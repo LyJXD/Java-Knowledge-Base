@@ -91,4 +91,34 @@ public static void main(String[] args)
 - **定义**  
 	JavaBean是一种遵循特定命名规范的Java类，主要用于封装([[Encapsulation]])数据并进行组件间的数据传递。
 - **规则**  
-	1. 有一个无参构造方法
+	1. 有一个无参构造方法。
+	2. 所有属性必须是private修饰。
+	3. 为每个属性提供public的getter和setter方法。
+	4. 实现Serializable接口（可选）。
+- **示例**  
+```
+public class User implements Serializable {
+    private int id;
+    private String name;
+    private String email;
+
+    public User() {
+        // 无参构造器
+    }
+
+    // Getter 和 Setter 方法
+    public int getId() { return id; }
+    public void setId(int id) { this.id = id; }
+
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
+    @Override
+    public String toString() {
+        return "User{id=" + id + ", name='" + name + "', email='" + email + "'}";
+    }
+}
+```
