@@ -90,7 +90,7 @@ public static void main(String[] args)
 ### JavaBean
 - **定义**  
 	JavaBean是一种遵循特定命名规范的Java实体类，主要用于封装([[Encapsulation]])数据并进行组件间的数据传递。
-- **规则**  
+- **规范**    
 	1. 有一个无参构造方法。
 	2. 所有属性必须是private修饰。
 	3. 为每个属性提供public的getter和setter方法。
