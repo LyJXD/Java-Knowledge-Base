@@ -40,7 +40,8 @@ class Person {
     
     // 构造方法  
     Person() {  
-    }    Person(String name, int age) {  
+    }    
+    Person(String name, int age) {  
         this.name = name;  
         this.age = age;  
     }  
@@ -57,3 +58,20 @@ class Person {
     }  
 }
 ```
+### 构造方法
+- **特点**  
+	1. 方法名与类名相同，大小写也要一致
+	2. 没有返回值类型，连void都没有
+	3. 没有具体的返回值（不能由return带回结果数据）
+- **执行时机**  
+	1. 创建对象的时候由`虚拟机`调用，不能手动调用构造方法
+	2. 每创建一次对象，就会调用过一次构造方法
+- **语法**
+```
+public class Person{  
+    修饰符 类名（参数）{  
+        方法体;  
+    }  
+}
+```
+### 主方法
