@@ -97,28 +97,43 @@ public static void main(String[] args)
 	4. 实现Serializable接口（可选）。
 - **示例**  
 ```
-public class User implements Serializable {
-    private int id;
-    private String name;
-    private String email;
-
-    public User() {
-        // 无参构造器
-    }
-
-    // Getter 和 Setter 方法
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
-
-    @Override
-    public String toString() {
-        return "User{id=" + id + ", name='" + name + "', email='" + email + "'}";
-    }
+public class User implements Serializable {  
+    private int id;  
+    private String name;  
+    private String email;  
+    
+    public User() {  
+        // 无参构造器  
+    }  
+    
+    // Getter 和 Setter 方法  
+    public int getId() {  
+        return id;  
+    }  
+    
+    public void setId(int id) {  
+        this.id = id;  
+    }  
+    
+    public String getName() {  
+        return name;  
+    }  
+    
+    public void setName(String name) {  
+        this.name = name;  
+    }  
+    
+    public String getEmail() {  
+        return email;  
+    }  
+    
+    public void setEmail(String email) {  
+        this.email = email;  
+    }  
+    
+    @Override  
+    public String toString() {  
+        return "User{id=" + id + ", name='" + name + "', email='" + email + "'}";  
+    }  
 }
 ```
