@@ -12,5 +12,19 @@
 	使用new创建对象时，会调用构造方法初始化对象。
 - **示例**
 ```
-
+public class Person {  
+    public String name;  
+    public int id;  
+    public int age;  
+    
+    public Person(String name, int id, int age) {  
+        this.name = name;  
+        this.id = id;  
+        this.age = age;   
+    }   
+    
+    public static void main(String[] args) {  
+        Student student1 = new Student("张三", 1, 18);  
+    }  
+}
 ```
