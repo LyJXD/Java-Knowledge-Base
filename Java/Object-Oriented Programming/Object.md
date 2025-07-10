@@ -22,7 +22,9 @@ public class Person {
         this.id = id;  
         this.age = age;   
     }   
-    
+}
+
+public class TestPerson{
     public static void main(String[] args) {  
         Student student1 = new Student("张三", 1, 18);  
     }  
