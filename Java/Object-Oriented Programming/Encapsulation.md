@@ -4,7 +4,7 @@
 要访问该类的代码和数据，必须通过严格的接口控制。
 封装最主要的功能在于我们能修改自己的实现代码，而不用修改那些调用我们代码的程序片段。
 ### 实现
-```
+```java
 public class Person{
     private String name;
     private int age;

@@ -13,7 +13,7 @@
 ### 创建类
 一个java文件中可以定义多个class类，但只有一个类被`public`修饰，且该类名必须为文件名。
 - **语法**  
-```
+```java
 访问修饰符 class 类名 {
     // 定义属性
     属性1;
@@ -32,7 +32,7 @@
 }
 ```
 - **示例**  
-```
+```java
 class Person {  
     // 定义属性  
     String name;  
@@ -71,7 +71,7 @@ class Person {
 - **构造方法的重载** 
 	带参构造方法，和无参构造方法，两者方法名相同，但是参数不同，这叫做构造方法的重载。
 - **语法**
-```
+```java
 public class Person{  
     修饰符 类名（参数）{  
         方法体;  
@@ -81,7 +81,7 @@ public class Person{
 ### 主方法
 每个类都可以定义一个特殊的方法——主方法，有了这个方法就可以让JVM来执行这个类程序。
 - **语法**  
-```
+```java
 // 主方法的格式为固定句式
 public static void main(String[] args)
 ```
@@ -96,7 +96,7 @@ public static void main(String[] args)
 	3. 为每个属性提供 `public` 的getter和setter方法。
 	4. 实现Serializable接口（可选）。
 - **示例**  
-```
+```java
 public class User implements Serializable {  
     private int id;  
     private String name;  

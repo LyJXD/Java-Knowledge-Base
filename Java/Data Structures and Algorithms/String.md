@@ -2,23 +2,23 @@
 在Java中字符串属于对象，Java提供了String类来创建和操作字符串。
 ### 创建
 - **字面量方式**  
-```
+```java
 String s1 = "hello";
 String s2 = "hello";
 System.out.println(s1 == s2); // true，共享常量池
 ```
 - **使用new创建（不推荐）**  
-```
+```java
 String s3 = new String("hello");
 System.out.println(s1 == s3); // false，创建两个对象：常量池中的 "hello" + 堆中新对象
 ```
 - **使用拼接**
-```
+```java
 String s4 = "he" + "llo";     // 编译期常量，仍然在常量池中
 String s5 = s1 + " world";    // 运行期拼接，生成新对象
 ```
 ### 实现原理
-```
+```java
 // String 实现源码（JDK21）
 public final class String implements java.io.Serializable, Comparable<String>, Constable,ConstantDesc{
 	@Stable
@@ -39,3 +39,22 @@ public final class String implements java.io.Serializable, Comparable<String>, C
 	1. 当程序中出现字符串常量时（如 `String str = "hello";` ），JVM会先在字符串常量池中查找是否存在内容相同的字符串对象。如果存在，就直接将 `str` 指向常量池中的那个对象；如果不存在，JVM会创建一个新的字符串对象，并将其放入常量池中，然后让 `str` 指向这个新对象。  
 	2. 对于通过 `new String()` 创建的字符串对象，它们默认不会被放入字符串常量池。但是，如果调用了 `intern()` 方法（如 `new String("hello").intern();`），JVM会检查字符串常量池中是否存在内容相同的字符串对象。如果存在，就返回常量池中的那个对象的引用；如果不存在，就会将当前字符串对象添加到常量池中，并返回其引用。
 ### 字符串的内存存储
+- 使用双引号创建的字符串
+```java
+String test = "ab";
+```
+字符串 `"ab"` 会直接出现在字符串常量池中。
+![[string1.jpg]]
+- 通过 `new String()` 的方式创建的字符串
+```java
+String test = new String("ab");
+```
+字符串 `"ab"` 同样会出现在字符串常量池中，同时在堆内存中也会分配一块空间存放test对象。
+![[string2.jpg]]
+- 拼接字符串"+"
+```java
+String test = "ab" + "cd";
+// 等价于
+String test = "abcd";
+```
+ "ab" +　"cd";编译器会直接优化成 "abcd"

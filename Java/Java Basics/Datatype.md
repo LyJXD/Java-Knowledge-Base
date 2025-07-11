@@ -38,7 +38,7 @@
 	byte -> short -> int -> long -> float -> double  
 	char -> int  
 byte、short、char类型在运算时会首先提升为int类型。
-```
+```java
 byte smallNum = 1; 
 int bigNum = smallNum; // 触发自动类型转换
 
@@ -51,7 +51,7 @@ int sum02 = num01 + num02; // byte转换为int进行运算
 ```
 ### 强制类型转换
 大范围往小范围转化需要用到强制转换，转换后的值会有所损失。
-```
+```java
 int numA = 257; // ......1 00000001  
 byte numB = (byte)numA;  
 ```

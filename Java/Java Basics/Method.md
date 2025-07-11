@@ -10,7 +10,7 @@ Java方法是语句的集合，它们在一起执行一个功能。
 	4. 提高了代码的重用性。
 ### 方法的定义
 - **语法** 
-```
+```java
 修饰符 返回值类型 方法名(参数类型 参数名){
     ...
     方法体
@@ -31,7 +31,7 @@ Java方法是语句的集合，它们在一起执行一个功能。
 - **方法体**  
 	方法体包含具体的语句，定义该方法的功能。
 - **示例**  
-```
+```java
 /** 返回两个整型变量数据的较大值 */
 public static int max(int num1, int num2) {
    int result;
@@ -48,7 +48,7 @@ Java支持两种调用方法的方式，根据方法是否返回值来选择。
 当程序调用一个方法时，程序的控制权交给了被调用的方法。当被调用方法的返回语句执行或者到达方法体闭括号时候交还控制权给程序。
 当方法返回一个值的时候，方法调用通常被当做一个值。
 - **示例** 
-```
+```java
 public class MethodDemo {    
 	public static void main(String[] args) {  
 	    int i = 5;  
@@ -70,7 +70,7 @@ public class MethodDemo {
 ```
 如果方法返回值是void，方法调用一定是一条语句。
 - **示例**  
-```
+```java
 public class MethodDemo {  
     public static void main(String[] args) {  
         print();  

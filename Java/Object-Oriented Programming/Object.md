@@ -11,7 +11,7 @@
 - **初始化**  
 	使用new创建对象时，会调用构造方法初始化对象。
 - **示例**
-```
+```java
 public class Person {  
     public String name;  
     public int id;  
