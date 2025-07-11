@@ -55,10 +55,10 @@ String test = new String("ab");
 ```java
 // 案例1
 String test = "ab" + "cd";
-// 等价于
+// 字节码中实际变成如下代码
 String test = "abcd";
 ```
- 该情况 `"ab"` + `"cd"` 编译器会直接优化成 `"abcd"`。
+ 该案例`"ab"` 和 `"cd"` 都是字符串字面量（常量），编译器会在编译期间自动拼接成 `"abcd"`。
 ![[string3.jpg]]
  ```java
 // 案例2
@@ -66,5 +66,10 @@ String ab = "ab";
 String cd = "cd";
 String test = ab + cd;
 ```
-该情况字符串 `"ab"` `"cd"` 会出现在字符串常量池，但是在字符串常量池中不会有 `"abcd"`。
+`"ab"` 和 `"cd"` 是变量（即使它们指向常量），编译器不能确定它们的值（可能是运行期变化的），所以无法在编译期拼接。编译器生成的是字符串连接操作，底层其实会变成：
+```java
+new StringBuilder().append(ab).append(cd).toString();
+```
+该案例 `"ab"` 和 `"cd"` 是常量字面量，仍会进入字符串常量池。
+拼接生成的新字符串 `"abcd"` 是运行时创建的，存在**堆内存中**，不会自动加入常量池。
 ![[string4.jpg]]
