@@ -128,7 +128,7 @@ public class test {
 }
 ```
 - **equals()**
-	String重写了 `equals` 方法因此可以进行值比较，`equals` 底层代码与 `==` 没有区别。
+	String重写了 `equals()` 方法因此可以进行值比较，`equals` 底层代码与 `==` 没有区别。
 ```java
 // 底层代码
 public boolean equals(Object obj) {  
