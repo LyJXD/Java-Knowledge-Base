@@ -46,7 +46,6 @@ public class test {
         dog.eat();
         dog.sleep();
         dog.bark();
-        System.out.println("===========");
         
         cat.name = "小灰灰";
         cat.color = "灰白";
@@ -72,7 +71,32 @@ public class test {
 ### super关键字
 
 ### 重写
+重写也称覆盖，是子类对父类非静态、非private、非final方法的实现过程进行重新编写，返回值和形参都不能改变。
 - **规则**  
-	1. 子类在重写父类的方法时，一般必须与父类方法原型一致：修饰符 返回值类型 方法名(参数列表) 要完全一致
-	2. JDK7以后，被重写的方法返回值类型可以不同，但是必须是具有父子关系的。
-	3. 访问权限不能比父类中被重写的方法的访问权限更低。父类被static、private final修饰的方法不能被重写。
+	1. 发生在父类与子类之间。
+	2. 子类在重写父类的方法时，一般必须与父类方法原型一致：`修饰符 返回值类型 方法名(参数列表) ` 要完全一致。
+	3. JDK7以后，被重写的方法返回值类型可以不同，但是必须是具有父子关系的。
+	4. 访问权限不能比父类中被重写的方法的访问权限更低。父类被static、private final修饰的方法不能被重写。
+	5. 重写方法一定不能抛出新的检查异常或者比被重写方法申明更加宽泛的检查型异常
+- **示例**
+```java
+public class Father {
+    public void eat() {
+        System.out.println("吃饭");
+    }
+}
+
+class Son extends Father{
+    @Override
+    public void eat() {
+        System.out.println("吃烤串");
+    }
+}
+
+public class test {
+	public static void main(String[] args) {
+        Son son = new Son();
+        son.eat();
+    }
+}
+```
