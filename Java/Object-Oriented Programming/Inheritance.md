@@ -127,3 +127,21 @@ public class test {
     }
 }
 ```
+- **equals()**
+	String重写了 `equals` 方法因此可以进行值比较，`equals` 底层代码与 `==` 没有区别。
+```java
+// 底层代码
+public boolean equals(Object obj) {  
+    return (this == obj);  
+}
+
+// String重写
+public boolean equals(Object anObject) {  
+    if (this == anObject) {  
+        return true;  
+    }  
+    return (anObject instanceof String aString)  
+            && (!COMPACT_STRINGS || this.coder == aString.coder)  
+            && StringLatin1.equals(value, aString.value);  
+}
+```
