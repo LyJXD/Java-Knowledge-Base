@@ -69,7 +69,34 @@ public class test {
 - **缺点**  
 	继承让类与类之间产生了关系，类的耦合性增强了，当父类发生变化时子类实现也不得不跟看变化，削弱了子类的独立性。
 ### super关键字
-
+通过 super 关键字来实现对父类成员的访问，用来引用当前对象的父类。
+- **示例**
+```java
+class Animal {
+    void eat() {
+        System.out.println("animal : eat");
+    }
+}
+ 
+class Dog extends Animal {
+    void eat() {
+        System.out.println("dog : eat");
+    }
+    void eatTest() {
+        this.eat();   // this 调用自己的方法
+        super.eat();  // super 调用父类方法
+    }
+}
+ 
+public class Test {
+    public static void main(String[] args) {
+        Animal a = new Animal();
+        a.eat();
+        Dog d = new Dog();
+        d.eatTest();
+    }
+}
+```
 ### 重写
 重写也称覆盖，是子类对父类非静态、非private、非final方法的实现过程进行重新编写，返回值和形参都不能改变。
 - **规则**  
