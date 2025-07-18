@@ -27,7 +27,22 @@ final List<String> list = new ArrayList<>();
 list.add("abc");          // ✅ 合法
 list = new ArrayList<>(); // ❌ 报错
 ```
+
 ## final修饰成员方法
 - **定义**  
 	`final` 修饰的方法不能被子类[[Inheritance#重写]]，保证方法行为在继承体系中保持一致。
 - **示例**  
+```java
+class Animal {
+    final void eat() {
+        System.out.println("Eating...");
+    }
+}
+
+class Dog extends Animal {
+    // ❌ 报错 不能重写 final 方法
+    void eat() {
+        System.out.println("Dog eating");
+    }
+}
+```
