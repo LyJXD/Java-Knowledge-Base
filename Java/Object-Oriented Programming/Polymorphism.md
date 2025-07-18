@@ -5,36 +5,3 @@
 	1. 继承关系:存在继承关系的类之间才能够使用多态性。多态性通常通过一个父类用变量引用子类对象来实现。
 	2. 方法重写:子类必须重写（Override）父类的方法。通过在子类中重新定义和实现父类的方法，可以根据子类的特点行为改变这个方法的行为，如猫和狗吃东西的独特行为。
 	3. 父类引用指向子类对象:使用父类的引用变量来引用子类对象。这样可以实现对不同类型的对象的统一操作，而具体调用哪个子类的方法会在运行时多态决定
-- **示例**
-```java
-class Animal {
-    public void sound() {
-        System.out.println("动物发出声音");
-    }
-}
-
-class Dog extends Animal {
-    @Override
-    public void sound() {
-        System.out.println("狗发出汪汪声");
-    }
-}
-
-class Cat extends Animal {
-    @Override
-    public void sound() {
-        System.out.println("猫发出喵喵声");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Animal animal1 = new Dog(); // 父类引用指向子类对象
-        Animal animal2 = new Cat(); // 父类引用指向子类对象
-
-        animal1.sound(); // 输出：狗发出汪汪声
-        animal2.sound(); // 输出：猫发出喵喵声
-    }
-}
-```
-在这个示例中，`Animal` 类是父类，`Dog` 和 `Cat` 类是它的子类。通过将父类的引用变量分别指向子类对象，实现了多态性。在运行时，根据引用变量的实际类型来调用相应的子类方法，从而输出不同的声音。
