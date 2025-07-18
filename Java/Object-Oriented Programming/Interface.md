@@ -2,12 +2,35 @@
 Java接口是一系列方法的声明，是一些方法特征的集合，一个接口只有方法的特征没有方法的实现，因此这些方法可以在不同的地方被不同的类实现，而这些实现可以具有不同的行为（功能）。
 - **语法**  
 ```java
-
-修饰符 interface 接口名称 extends 其他的接口名称 {
-        // 声明变量
-        // 抽象方法
+// 接口声明
+[修饰符] interface 接口名称 [extends 其他的接口名称] {
+	// 声明变量
+	// 抽象方法
 }
 
+// 实现接口
+ class 类名 implements 接口名称1, 接口名称2...{
+	@Override
+	// 重写抽象方法
+ }
+```
+- **示例**  
+```java
+public interface USB {  
+    public void read();  
+    public void write();  
+}
+
+class KeyBoard implements USB {
+    @Override
+    public void read() {
+        System.out.println("键盘正在通过USB功能读取数据");
+    }
+    @Override
+    public void write() {
+        System.out.println("键盘正在通过USB功能写入数据");
+    }
+}
 ```
 - **接口与类的相似点**  
 	1. 一个接口可以有多个方法。
