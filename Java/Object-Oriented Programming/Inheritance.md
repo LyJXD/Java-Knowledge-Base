@@ -71,12 +71,12 @@ public class test {
 	继承让类与类之间产生了关系，类的耦合性增强了，当父类发生变化时子类实现也不得不跟看变化，削弱了子类的独立性。
 ### super关键字
 - 通过 `super` 关键字来实现对父类成员的访问，用来引用当前对象的父类。
-- `super(参数)` 调用父类的构造函数（应该为构造函数中的第一条语句）。
+- `super(参数)` 调用父类的构造方法（应该为构造方法中的第一条语句）。
 - **示例**
 ```java
 class Animal {
 	public Animal() { 
-		System.out.println("Animal类的无参数构造函数"); 
+		System.out.println("Animal类的无参数构造方法"); 
 	}
     void eat() {
         System.out.println("animal : eat");
@@ -85,8 +85,8 @@ class Animal {
  
 class Dog extends Animal {
 	public Dog() { 
-		super();     // super() 调用父类的构造函数
-		System.out.println("Dog类的无参数构造函数"); 
+		super();     // super() 调用父类的构造方法
+		System.out.println("Dog类的无参数构造方法"); 
 	}
     void eat() {
         System.out.println("dog : eat");
