@@ -61,6 +61,7 @@ public class test {
 	2. Java中类只有单继承，没有多继承，允许多层继承。
 	3. 成员变量访问遵循就近原则，自己有优先自己的，如果没有则向父类中找。
 	4. 在继承关系之中，如果要实例化子类对象，会默认先调用父类构造，再调用子类构造。
+	5. 子类默认会调用父类的无参构造器，如果父类没有无参构造器，子类一定需要指定一个带参构造器。
 - **优点**  
 	1. 实现了数据和方法的共享。
 	2. 提高了代码的复用性(多个类相同的成员可以放到同一个类中)。
@@ -69,16 +70,24 @@ public class test {
 - **缺点**  
 	继承让类与类之间产生了关系，类的耦合性增强了，当父类发生变化时子类实现也不得不跟看变化，削弱了子类的独立性。
 ### super关键字
-通过 super 关键字来实现对父类成员的访问，用来引用当前对象的父类。
+- 通过 `super` 关键字来实现对父类成员的访问，用来引用当前对象的父类。
+- `super(参数)` 调用父类的构造函数（应该为构造函数中的第一条语句）。
 - **示例**
 ```java
 class Animal {
+	public Animal() { 
+		System.out.println("Animal类的无参数构造函数"); 
+	}
     void eat() {
         System.out.println("animal : eat");
     }
 }
  
 class Dog extends Animal {
+	public Dog() { 
+		super();     // super() 调用父类的构造函数
+		System.out.println("Dog类的无参数构造函数"); 
+	}
     void eat() {
         System.out.println("dog : eat");
     }
