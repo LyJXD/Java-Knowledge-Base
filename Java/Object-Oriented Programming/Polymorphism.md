@@ -24,8 +24,39 @@
 	2. 方法重写:子类必须重写父类的方法。通过在子类中重新定义和实现父类的方法，可以根据子类的特点行为改变这个方法的行为，如猫和狗吃东西的独特行为。
 	3. 父类引用指向子类对象:使用父类的引用变量来引用子类对象。这样可以实现对不同类型的对象的统一操作，而具体调用哪个子类的方法会在运行时多态决定。
 - **示例**  
-```
+```java
+class Animal {
+    public void sound() {
+        System.out.println("动物发出声音");
+    }
+}
 
+class Dog extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("狗叫：汪汪汪");
+    }
+}
+
+class Cat extends Animal {
+    @Override
+    public void sound() {
+        System.out.println("猫叫：喵喵喵");
+    }
+}
+
+// 测试运行时多态
+public class OverrideExample {
+    public static void main(String[] args) {
+        Animal animal; // 父类引用
+        
+        animal = new Dog();
+        animal.sound(); // 输出：狗叫：汪汪汪
+        
+        animal = new Cat();
+        animal.sound(); // 输出：猫叫：喵喵喵
+    }
+}
 ```
 
 ### 多态的优缺点
