@@ -212,7 +212,7 @@ public class Outer{
 - **特点**  
 	1. 可以是任何的访问修饰符。
 	2. 内部类的内部不能有静态信息。
-	3. 外部类访问内部类信息，必须new之后打点访问。
+	3. 外部类访问内部类信息，必须 `new` 之后打点访问。
 	4. 内部类可以直接使用外部类的任何信息，如果属性或者方法发生冲突，调用外部类.this.属性或者方法。
 - **示例**
 ```java
@@ -278,6 +278,12 @@ public class Other {
 }
 ```
 ### 静态内部类
+- **特点**  
+	1. 内部可以包含任意的信息。
+	2. 静态内部类的方法只能访问外部类的static关联的信息。
+	3. 利用 `外部类.内部类 引用 = new 外部类.内部类();` 然后利用 `引用.成员信息` 调用。
+	4. 访问内部类的静态信息 -> 外部类.内部类.静态信息。
+	5. 静态内部类可以独立存在，不依赖于其他外部类。
 - **示例**
 ```java
 public class Outer {
@@ -331,12 +337,25 @@ public class Outer {
     }
     
     /**
-     * 外部类的内部如何和内部类打交道
+     * 外部类访问内部类
      */
-    public static void callInner() {
+    public static void outerStaticShow() {
         System.out.println(Inner.innerStaticVariable);
         Inner.innerStaticShow();
     }
 }
 
+/**
+ * 其他类使用静态内部类
+ */
+public class Other {
+    public static void main(String[] args) {
+        //访问静态内部类的静态方法，Inner类被加载,此时外部类未被加载，独立存在。
+        Outer.Inner.innerStaticShow();
+        //访问静态内部类的成员方法
+        Outer.Inner oi = new Outer.Inner();
+        oi.innerShow();
+    }
+}
 ```
+### 局部内部类
