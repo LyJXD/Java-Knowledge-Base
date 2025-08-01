@@ -209,11 +209,13 @@ public class Outer{
 	3. 内部类提供了更好的封装，除了该外部类，其他类都不能访问。  
 	4. 创建内部类对象的时刻并不依赖于外部类对象的创建。
 ### 成员内部类
+- **特点**  
+	1. 可以是任何的访问修饰符。
+	2. 内部类的内部不能有静态信息。
+	3. 外部类访问内部类信息，必须new之后打点访问。
+	4. 内部类可以直接使用外部类的任何信息，如果属性或者方法发生冲突，调用外部类.this.属性或者方法。
 - **示例**
 ```java
-/**
- * 外部类、成员内部类的定义
- */
 public class Outer {
     private int outerVariable = 1;
     private int commonVariable = 2;
@@ -254,7 +256,7 @@ public class Outer {
     }
     
     /**
-     * 外部类访问内部类信息
+     * 外部类访问内部类
      */
     public void outerShow() {
         Inner inner = new Inner();
@@ -274,4 +276,67 @@ public class Other {
         inner.innerShow();
     }
 }
+```
+### 静态内部类
+- **示例**
+```java
+public class Outer {
+    private int outerVariable = 1;
+    private int commonVariable = 2;
+    private static int outerStaticVariable = 3;
+    
+    static {
+        System.out.println("Outer的静态块被执行了……");
+    }
+    
+    public void outerMothod() {
+        System.out.println("我是外部类的outerMethod方法");
+    }
+    
+    public static void outerStaticMethod() {
+        System.out.println("我是外部类的outerStaticMethod静态方法");
+    }
+    
+    /**
+     * 静态内部类
+     */
+    public static class Inner {
+        private int innerVariable = 10;
+        private int commonVariable = 20;
+        
+        static {
+            System.out.println("Outer.Inner的静态块执行了……");
+        }
+        
+        private static int innerStaticVariable = 30;
+        
+        /**
+         * 成员方法
+         */
+        public void innerShow() {
+            System.out.println("innerVariable:" + innerVariable);
+            System.out.println("内部的commonVariable:" + commonVariable);
+            System.out.println("outerStaticVariable:"+outerStaticVariable);
+            outerStaticMethod();
+        }
+        
+        /**
+         * 静态方法
+         */
+        public static void innerStaticShow() {
+        	//被调用时会先加载Outer类
+            outerStaticMethod();
+            System.out.println("outerStaticVariable" + outerStaticVariable);
+        }
+    }
+    
+    /**
+     * 外部类的内部如何和内部类打交道
+     */
+    public static void callInner() {
+        System.out.println(Inner.innerStaticVariable);
+        Inner.innerStaticShow();
+    }
+}
+
 ```
