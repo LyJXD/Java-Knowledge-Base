@@ -188,9 +188,90 @@ class Test {
 
 ## 内部类
 在Java中，可以将一个类定义在另一个类里面或者一个方法里面，这样的类称为内部类。内部类拥有类的基本特征，在实际问题中我们会遇到一些接口无法解决或难以解决的问题，此时我们可以使用内部类继承某个具体的或抽象的类，间接解决类无法多继承引起的一系列问题。
+- **语法**  
+```java
+/**
+*	我是一个外部类（外部是相对内部而言）
+*/
+public class Outer{
+	/**
+	*	我是一个内部类
+	*/
+	class Inner{
+	//...
+	}
+}
+
+```
 - **优点**  
 	1. 内部类可以用多个实例，每个实例都有自己的状态信息，并且与其他外部对象的信息相互独立。  
 	2. 内部类并没有令人迷惑的“is-a”关系，他就是一个独立的实体。  
 	3. 内部类提供了更好的封装，除了该外部类，其他类都不能访问。  
 	4. 创建内部类对象的时刻并不依赖于外部类对象的创建。
 ### 成员内部类
+- **示例**
+```java
+/**
+ * 外部类、成员内部类的定义
+ */
+public class Outer {
+    private int outerVariable = 1;
+    private int commonVariable = 2;
+    private static int outerStaticVariable = 3;
+    
+    public void outerMethod() {
+        System.out.println("我是外部类的outerMethod方法");
+    }
+    
+    public static void outerStaticMethod() {
+        System.out.println("我是外部类的outerStaticMethod静态方法");
+    }
+    
+    /**
+     * 内部类
+     */
+    public class Inner {
+        private int commonVariable = 20;
+        
+        public Inner() {
+        }
+        
+        /**
+         * 成员方法，访问外部类信息（属性、方法）
+         */
+        public void innerShow() {
+            //当和外部类冲突时，直接引用属性名，是内部类的成员属性
+            System.out.println("内部的commonVariable:" + commonVariable);
+            //内部类访问外部属性
+            System.out.println("outerVariable:" + outerVariable);
+            //当和外部类属性名重叠时，可通过外部类名.this.属性名
+            System.out.println("外部的commonVariable:" + Outer.this.commonVariable);
+            System.out.println("outerStaticVariable:" + outerStaticVariable);
+            //访问外部类的方法
+            outerMethod();
+            outerStaticMethod();
+        }
+    }
+    
+    /**
+     * 外部类访问内部类信息
+     */
+    public void outerShow() {
+        Inner inner = new Inner();
+        inner.innerShow();
+    }
+}
+
+/**
+ * 其他类使用成员内部类
+ */
+public class Other {
+    public static void main(String[] args) {
+        //外部类对象
+        Outer outer = new Outer();
+        //创造内部类对象
+        Outer.Inner inner = outer.new Inner();
+        inner.innerShow();
+    }
+}
+```
