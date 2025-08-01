@@ -358,4 +358,76 @@ public class Other {
     }
 }
 ```
-### 局部内部类
+### 匿名内部类
+- **特点**  
+	1. 匿名内部类没有访问修饰符。
+	2. 匿名内部类没有构造方法。
+	3. 匿名内部类本质是一个子类，并会立即创建出一个子类对象。
+	4. 匿名内部类访问方法参数时也有和局部内部类同样的限制。
+- **示例**
+```java
+
+```
+### 局部内部类(不重要)
+- **特点**  
+	1. 类前不能有访问修饰符。
+	2. 仅在此方法内使用。
+	3. 无法创造静态信息。
+	4. 可以直接访问方法内的局部变量和参数，但是不能更改。
+	5. 可以随意的访问外部类的任何信息。
+- **示例**
+```java
+public class Outer {
+    private int outerVariable = 1;
+    private int commonVariable = 2;
+    private static int outerStaticVariable = 3;
+    
+    public void outerMethod() {
+        System.out.println("我是外部类的outerMethod方法");
+    }
+    
+    public static void outerStaticMethod() {
+        System.out.println("我是外部类的outerStaticMethod静态方法");
+    }
+
+    public static void main(String[] args) {
+        Outer outer = new Outer();
+        outer.outerCreatMethod(100);
+    }
+    
+    /**
+     * 成员方法，内部定义局部内部类
+     */
+    public void outerCreatMethod(int value) {
+        boolean sex = false;
+        
+        /**
+         * 局部内部类，类前不能有访问修饰符
+         */
+        class Inner {
+            private int innerVariable = 10;
+            private int commonVariable = 20;
+			/**
+			*	局部内部类方法
+			*/
+            public void innerShow() {
+                System.out.println("innerVariable:" + innerVariable);
+                //局部变量
+                System.out.println("是否男性:" + sex);
+                System.out.println("参数value:" + value);
+                //调用外部类的信息
+                System.out.println("outerVariable:" + outerVariable);
+                System.out.println("内部的commonVariable:" + commonVariable);
+                System.out.println("外部的commonVariable:" + Outer.this.commonVariable);
+                System.out.println("outerStaticVariable:" + outerStaticVariable);
+                outerMethod();
+                outerStaticMethod();
+            }
+        }
+        
+        //局部内部类只能在方法内使用
+        Inner inner = new Inner();
+        inner.innerShow();
+    }
+}
+```
