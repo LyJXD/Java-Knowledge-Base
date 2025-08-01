@@ -363,10 +363,30 @@ public class Other {
 	1. 匿名内部类没有访问修饰符。
 	2. 匿名内部类没有构造方法。
 	3. 匿名内部类本质是一个子类，并会立即创建出一个子类对象。
-	4. 匿名内部类访问方法参数时也有和局部内部类同样的限制。
+	4. 匿名内部类是被临时创建了，在内存中存在系统设定的名字。
+	5. 匿名内部类访问方法参数时也有和局部内部类同样的限制。
 - **示例**
 ```java
+public class Interface01 {
+    public static void main(String[] args) {
+        A a = new A(){
+            @Override
+            public void eat() {
+                System.out.println("正在调用eat方法");
+            }
+            public void drink(){
+                System.out.println("正在调用drink方法");
+            }
+        };
+        a.eat();
+        a.drink();
+    }
+}
 
+interface A{
+    public void eat();
+    public void drink();
+}
 ```
 ### 局部内部类(不重要)
 - **特点**  
