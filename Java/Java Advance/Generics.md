@@ -52,6 +52,8 @@ public void Test() {
 }
 ```
 ### 泛型接口
+- **特点**
+	
 - **语法**
 ```java
 public interface 接口名<类型参数> {
