@@ -454,12 +454,16 @@ public class Outer {
 ```
 ## 包装类
 包装类就是将基本的数据类型以及一些辅助方法包装到类中。
-原始类型 -> 包装类
-byte -> Byte
-boolean -> Boolean
-char -> Character
-double -> Double
-float -> Float
-int -> Integer
-long -> Long
-short -> Short
+- **原始类型 -> 包装类**  
+	byte -> Byte
+	boolean -> Boolean
+	char -> Character
+	double -> Double
+	float -> Float
+	int -> Integer
+	long -> Long
+	short -> Short
+- **自动装箱**  
+	将基本数据类型封装为包装类对象
+- **自动拆箱**  
+	
