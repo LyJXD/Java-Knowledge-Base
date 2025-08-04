@@ -165,4 +165,5 @@ public boolean equals(Object anObject) {
 }
 ```
 - **hashCode()**
-	重写 `equals()` 方法必须重写 `hashCode()` 方法。
+	1. hashcode代表对象在hash表中对应的位置
+	2. 重写 `equals()` 方法必须重写 `hashCode()` 方法。
