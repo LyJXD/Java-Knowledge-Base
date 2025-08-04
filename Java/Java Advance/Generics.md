@@ -100,4 +100,54 @@ public class Test<U> {
 ```
 ### 泛型通配符
 - **无界通配符**
+	
 - **上界通配符**
+	上界通配符，存在一个最上级的界限，即指定一个最高级别的父类，它表示对于该上界类型以及其子类都适用。
+- **下界通配符**
+	下界通配符，存在一个最低级的界限，即指定一个最低级别的子类，它表示对于该下界类型以及其父类都适用。
+- **示例**
+```java
+public class Wildcards {  
+    public static void main(String[] args) {  
+        ArrayList<Machine> machineList = new ArrayList<Machine>();  
+        ArrayList<Car> carList = new ArrayList<Car>();  
+        ArrayList<BENZ> benzList = new ArrayList<BENZ>();  
+        ArrayList<BMW> bmwList = new ArrayList<BMW>();  
+  
+        test(machineList);  
+        test(carList);  
+        test(benzList);  
+        test(bmwList);  
+  
+        test1(machineList); // ❌ 报错  
+        test1(carList);  
+        test1(benzList);  
+        test1(bmwList);  
+  
+        test2(machineList);  
+        test2(carList);  
+        test2(benzList);    // ❌ 报错  
+        test2(bmwList);     // ❌ 报错  
+    }  
+  
+    public static void test(ArrayList<?> list)  
+    {  
+        System.out.println("无界通配符");  
+    }  
+  
+    public static void test1(ArrayList<? extends Car> list)  
+    {  
+        System.out.println("上界通配符");  
+    }  
+  
+    public static void test2(ArrayList<? super Car> list)  
+    {  
+        System.out.println("下界通配符");  
+    }  
+}  
+  
+class Machine{}  
+class Car extends Machine{}  
+class BENZ extends Car{}  
+class BMW extends Car{}
+```

@@ -91,7 +91,7 @@ public class Main {
     public static void main(String[] args) {
         Animal animal = new Dog();  // 向上转型
         animal.eat();      // 调用的是 Dog 类中的 eat() 方法
-        // animal.bark();  // 错误：无法访问 Dog 类中独有的方法
+        // animal.bark();  // ❌ 报错：无法访问 Dog 类中独有的方法
         
         // 使用向下转型之前，需要先检查对象是否实际上是子类的实例
         if (animal instanceof Dog) {
