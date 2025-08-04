@@ -82,13 +82,19 @@ public <类型参数> 返回类型 方法名（类型参数 变量名） {
 ```java
 public class Test<U> {
 	// 该方法只是使用了泛型类定义的类型参数，不是泛型方法
-	public void testMethod(U u){
+	public static void testMethod(U u){
 		System.out.println(u);
 	}
 	
 	// <T> 真正声明了下面的方法是一个泛型方法
-	public <T> T testMethod1(T t){
-		return t;
-	}
+    public static <T> T getData(T data)  
+    {  
+        return data;  
+    }  
+    
+    public static void main(String[] args) {  
+        String str = Demo.getData("hello");  
+        int num = Demo.getData(100);  
+    }  
 }
 ```
