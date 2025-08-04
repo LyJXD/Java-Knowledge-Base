@@ -137,10 +137,19 @@ public class test {
     }
 }
 ```
+- **toString()**  
+	1. 当我们打印一个对象的引用时，实际是默认调用这个对象的toString()方法。
+	2. 当打印的对象所在类没有重写Object中的toString()方法时，默认调用的是Object类中toString()方法，返回此对象所在的类及对应的堆空间对象实体的首地址值。
+```java
+// Obeject类源代码
+public String toString() {
+    return getClass().getName() + "@" + Integer.toHexString(hashCode());
+}
+```
 - **equals()**
 	[[String]] 重写了 `equals()` 方法因此可以进行值比较，`equals` 底层代码与 `==` 没有区别。
 ```java
-// 源代码
+// Object类源代码
 public boolean equals(Object obj) {  
     return (this == obj);  
 }
@@ -155,12 +164,5 @@ public boolean equals(Object anObject) {
             && StringLatin1.equals(value, aString.value);  
 }
 ```
-- **toString()**  
-	1. 当我们打印一个对象的引用时，实际是默认调用这个对象的toString()方法。
-	2. 当打印的对象所在类没有重写Object中的toString()方法时，默认调用的是Object类中toString()方法，返回此对象所在的类及对应的堆空间对象实体的首地址值。
-```java
-// 源代码
-public String toString() {
-    return getClass().getName() + "@" + Integer.toHexString(hashCode());
-}
-```
+- **hashCode()**
+	重写 `equals()` 方法必须重写 `hashCode()` 方法。
