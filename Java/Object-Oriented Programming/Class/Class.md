@@ -464,6 +464,24 @@ public class Outer {
 	long -> Long
 	short -> Short
 - **自动装箱**  
-	将基本数据类型封装为包装类对象
+	编译器自动将原始类型转换为其相应的包装器类对象。
 - **自动拆箱**  
-	
+	编译器自动将包装器类对象转换为其相应的原始类型。
+- **示例**
+```java
+public class Test {
+	public static void main(String[] args) {
+		ArrayList<Integer> list = new ArrayList<>();
+		
+		// 自动装箱
+		list.add(5);
+		list.add(6);
+		
+		System.out.println("ArrayList: " + list);
+		
+		// 自动拆箱
+		int a = list.get(0);
+		System.out.println("Value at index 0: " + a);
+	}
+}
+```
