@@ -149,7 +149,7 @@ public String toString() {
 - **equals()**
 	[[String]] 重写了 `equals()` 方法因此可以进行值比较，`equals` 底层代码与 `==` 没有区别。
 ```java
-// Object类源代码
+// Objects类源代码
 public boolean equals(Object obj) {  
     return (this == obj);  
 }
@@ -169,4 +169,3 @@ public boolean equals(Object anObject) {
 	2. 重写 `equals()` 方法必须重写 `hashCode()` 方法。
 	3. 如果两个对象 `equals()` 相等，那么这两个对象的hashCode一定也相同。
 	4. 如果两个对象的hashCode相同，不代表两个对象就相同，只能说明这两个对象在散列存储结构中，存放于同一个位置。
-- **clone()**
