@@ -18,6 +18,7 @@ public class Student {
 }
 ```
 建议使用类名来访问静态变量，因为它们与类相关联，而不是与特定对象实例相关。
+
 ## 静态方法（static [[Method]])
 - **用途**  
 	1. 静态方法是属于类而不是类的实例的方法，它可以在不创建类的实例的情况下被调用。
@@ -40,6 +41,8 @@ public class Student {
     }
 }
 ```
+
 ## 静态代码块（static [[Code Block]])
 [[Code Blocks#静态代码块]]
+
 ## 静态内部类
