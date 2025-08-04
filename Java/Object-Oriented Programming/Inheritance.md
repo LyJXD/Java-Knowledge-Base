@@ -165,5 +165,8 @@ public boolean equals(Object anObject) {
 }
 ```
 - **hashCode()**
-	1. hashcode代表对象在hash表中对应的位置
+	1. hashCode的存在主要是为了查找的快捷性，hashCode是用来在散列存储结构中确定对象的存储地址，即hashcode代表对象在hash表中对应的位置。
 	2. 重写 `equals()` 方法必须重写 `hashCode()` 方法。
+	3. hashcode初始根据对象内存地址计算，重写后根据对象属性计算，因此相同的属性能计算出一样的hashcode。
+	4. 如果两个对象 `equals()` 相等，那么这两个对象的HashCode一定也相同。
+	5. 如果两个对象的HashCode相同，不代表两个对象就相同，只能说明这两个对象在散列存储结构中，存放于同一个位置。
