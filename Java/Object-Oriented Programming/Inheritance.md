@@ -149,9 +149,14 @@ public String toString() {
 - **equals()**
 	[[String]] 重写了 `equals()` 方法因此可以进行值比较，`equals` 底层代码与 `==` 没有区别。
 ```java
-// Objects类源代码
+// Object类源代码
 public boolean equals(Object obj) {  
     return (this == obj);  
+}
+
+// Objects工具类源代码
+public static boolean equals(Object a, Object b) {  
+    return (a == b) || (a != null && a.equals(b));  
 }
 
 // String重写
