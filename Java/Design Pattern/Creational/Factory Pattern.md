@@ -4,7 +4,7 @@
 	使用工厂统一管理对象的创建，将调用者跟实现类解耦。
 
 ## 简单工厂
-建立一个工厂类，对实现了同一接口的一些类进行实例的创建。
+简单工厂模式的核心是定义一个创建对象的接口，将对象的创建和本身的业务逻辑分离，降低系统的耦合度，使得两个修改起来相对容易些，当以后实现改变时，只需要修改工厂类即可。
 ![[简单工厂.png]]
 - **示例**
 ```java
@@ -45,20 +45,16 @@ public class Test {
     public static final String MPhone = "MPhone";
     
     public static void main(String[] args) {
-        // 生产小米手机
-        PhoneFactory factory1 = new PhoneFactory();
-        factory1.create(MPhone).call();
-        
-        // 生产苹果手机
-        PhoneFactory factory2 = new PhoneFactory();
-        factory2.create(IPhone).call();
+		// 生产手机  
+		PhoneFactory factory = new PhoneFactory();  
+		factory.create(MPhone).call();  
+		factory.create(IPhone).call();
     }
 }
-
 ```
 
 ## 工厂方法
-对简单工厂模式的改进，使用一个工厂接口，创建多个工厂类，每个工厂创建对应的对象。
+工厂方法模式将工厂抽象化，并定义一个创建对象的接口。每增加新产品，只需增加该产品以及对应的具体实现工厂类，由具体工厂类决定要实例化的产品是哪个，将对象的创建与实例化延迟到子类。
 ![[工厂方法.png]]
 - **示例**
 ```java
@@ -82,6 +78,8 @@ public class IPhoneFactory implements PhoneFactory{
     }
 }
 
+
+// 测试类
 public class Test {
     public static void main(String[] args) {
         // 生产小米手机
