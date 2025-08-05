@@ -3,6 +3,7 @@ API是Application Programming Interface的简写，Java API即Java编程语言�
 
 ## Java常用API
 [[ArrayList]]
+Math
 Object
 Objects （类s -> Java工具类)
 [[String]]
