@@ -58,7 +58,7 @@ public class Test {
 ![[工厂方法.png]]
 - **示例**
 ```java
-// 手机类同上
+// 手机类略
 
 // 工厂接口
 public interface PhoneFactory {
@@ -92,6 +92,56 @@ public class Test {
     }
 }
 ```
+
 ## 抽象工厂
-将工厂抽象成两层，抽象工厂和具体实现的工厂子类。程序员可以根据创建对象类型使用对应的工厂子类。这样将单个的简单工厂类变成了工厂集合， 更利于代码的维护和扩展。
+抽象工厂将工厂抽象成两层，抽象工厂和具体实现的工厂子类。程序员可以根据创建对象类型使用对应的工厂子类。这样将单个的简单工厂类变成了工厂集合，更利于代码的维护和扩展。
 ![[Pasted image 20250805100135.png]]
+- **示例**
+```java
+// 手机、电脑类略
+
+// 超级工厂
+public interface Factory {
+    public Phone createPhone();
+    public Book createBook();
+}
+
+// 苹果工厂
+public class AppleFactory implements Factory{
+    @Override
+    public Phone createPhone() {
+        return new IPhone();
+    }
+    
+    @Override
+    public Book createBook() {
+        return new MacBook();
+    }
+}
+// 小米工厂
+public class XiaoMiFactory implements Factory{
+    @Override
+    public Phone createPhone() {
+        return new MPhone();
+    }
+    
+    @Override
+    public Book createBook() {
+        return new MiBook();
+    }
+}
+
+// 测试类
+public class Test {
+    public static void main(String[] args) {
+        // 实例化苹果工厂，生产苹果手机和电脑
+        Factory factory = new AppleFactory();
+        factory.createBook().play();
+        factory.createPhone().call();
+        // 实例化小米工厂，生产小米手机和电脑
+        Factory factory1 = new XiaoMiFactory();
+        factory1.createBook().play();
+        factory1.createPhone().call();
+    }
+}
+```
