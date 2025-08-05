@@ -54,10 +54,12 @@ public class Test {
 ```
 
 ## 工厂方法
-工厂方法模式将工厂抽象化，并定义一个创建对象的接口。每增加新产品，只需增加该产品以及对应的具体实现工厂类，由具体工厂类决定要实例化的产品是哪个，将对象的创建与实例化延迟到子类。
+工厂方法将工厂抽象化，并定义一个创建对象的接口。每增加新产品，只需增加该产品以及对应的具体实现工厂类，由具体工厂类决定要实例化的产品是哪个，将对象的创建与实例化延迟到子类。
 ![[工厂方法.png]]
 - **示例**
 ```java
+// 手机类同上
+
 // 工厂接口
 public interface PhoneFactory {
     public Phone create();
@@ -78,7 +80,6 @@ public class IPhoneFactory implements PhoneFactory{
     }
 }
 
-
 // 测试类
 public class Test {
     public static void main(String[] args) {
@@ -92,3 +93,5 @@ public class Test {
 }
 ```
 ## 抽象工厂
+将工厂抽象成两层，抽象工厂和具体实现的工厂子类。程序员可以根据创建对象类型使用对应的工厂子类。这样将单个的简单工厂类变成了工厂集合， 更利于代码的维护和扩展。
+![[Pasted image 20250805100135.png]]
