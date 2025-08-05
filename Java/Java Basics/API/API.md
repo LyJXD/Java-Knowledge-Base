@@ -6,6 +6,7 @@ API是Application Programming Interface的简写，Java API即Java编程语言�
 Math
 Object
 Objects （类s -> Java工具类)
+Runtime
 [[String]]
 StringBuilder  //线程不安全
 StringBuffer   //线程安全
