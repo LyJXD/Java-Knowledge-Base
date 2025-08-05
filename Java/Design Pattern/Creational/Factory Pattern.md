@@ -60,4 +60,37 @@ public class Test {
 ## 工厂方法
 对简单工厂模式的改进，使用一个工厂接口，创建多个工厂类，每个工厂创建对应的对象。
 ![[工厂方法.png]]
+- **示例**
+```java
+// 工厂接口
+public interface PhoneFactory {
+    public Phone create();
+}
+
+// 小米手机工厂
+public class MPhoneFactory implements PhoneFactory{
+    @Override
+    public Phone create() {
+        return new MPhone();
+    }
+}
+// 苹果手机工厂
+public class IPhoneFactory implements PhoneFactory{
+    @Override
+    public Phone create() {
+        return new IPhone();
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        // 生产小米手机
+        PhoneFactory factory1 = new MPhoneFactory();
+        factory1.create().call();
+        // 生产苹果手机
+        PhoneFactory factory2 = new IPhoneFactory();
+        factory2.create().call();
+    }
+}
+```
 ## 抽象工厂
