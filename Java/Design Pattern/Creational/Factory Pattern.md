@@ -27,6 +27,7 @@ public class MPhone implements Phone{
     }
 }
 
+// 工厂类
 public class PhoneFactory {
     public Phone create(String type){
         if (type.equals("IPhone")){
@@ -38,8 +39,25 @@ public class PhoneFactory {
     }
 }
 
+public class Test {
+    public static final String IPhone = "IPhone";
+    
+    public static final String MPhone = "MPhone";
+    
+    public static void main(String[] args) {
+        // 生产小米手机
+        PhoneFactory factory1 = new PhoneFactory();
+        factory1.create(MPhone).call();
+        
+        // 生产苹果手机
+        PhoneFactory factory2 = new PhoneFactory();
+        factory2.create(IPhone).call();
+    }
+}
 
 ```
-## 工厂方法
 
+## 工厂方法
+对简单工厂模式的改进，使用一个工厂接口，创建多个工厂类，每个工厂创建对应的对象。
+![[工厂方法.png]]
 ## 抽象工厂
