@@ -56,7 +56,7 @@ public interface Sitter {
 	public abstract void work(String food);
 }
 
-public class Lambda {
+public class StaticMethodReference {
 	public static void main(String[] args) {
 		// 使用Lambda
 		hireSitter(food -> System.out.println("将" + food + "做成可口饭菜"));
@@ -87,7 +87,7 @@ public interface Sitter {
 	public abstract void work(String food);
 }
 
-public class MethodRef {
+public class MethodReference {
 	public static void main(String[] args) {
 		// Lambda
 		hireSitter(food -> System.out.println("将" + food + "做成可口的饭菜"));
@@ -120,7 +120,7 @@ Arrays.sort(s , new Comparator<String>() {
 	}
 });
 //lambda
-Arrays.sort(s , ( o1, o2) -> o1.compareToIgnoreCase(o2));
+Arrays.sort(s , (o1, o2) -> o1.compareToIgnoreCase(o2));
 
 //方法引用
 Arrays.sort(s , String::compareToIgnoreCase);
@@ -133,15 +133,18 @@ System.out.println(Arrays.toString(s));
 ```
 - **示例**
 ```java
-public class ConstructorReferenceExample {
-    public static void main(String[] args) {
-        // 使用构造函数引用
-        Supplier<StringBuilder> supplier = StringBuilder::new;
-        // 创建新的 StringBuilder 实例
-        StringBuilder sb = supplier.get();
-        sb.append("Hello, ");
-        sb.append("World!");
-        System.out.println(sb.toString());
-    }
+// Supplier接口源代码
+@FunctionalInterface
+public interface Supplier<T> {
+    T get();
+} 
+
+public class ConstructorReference {  
+    public static void main(String[] args) {  
+        // lambda表达式  
+        Supplier<Employee> supplier1 = () -> new Employee();  
+        // 使用构造函数引用  
+        Supplier<Employee> supplier2 = Employee::new;  
+    }  
 }
 ```
