@@ -15,7 +15,31 @@ public static void  BubbleSort(int[] arr){
 	}
 }
 ```
-- 
-```
-
+- **优化版**
+```java
+ /**
+ * 加入一个布尔变量,如果内循环没有交换值,说明已经排序完成,提前终止
+ */
+public static void sortPlus(int[] arr){
+    if(arr != null && arr.length > 1){
+        for(int i = 0; i < arr.length - 1; i++){
+            // 初始化一个布尔值
+            boolean flag = true;
+            for(int j = 0; j < arr.length - i - 1 ; j++){
+                if(arr[j] > arr[j+1]){
+                    // 调换
+                    int temp;
+                    temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                    // 改变flag
+                    flag = false;
+                }
+            }
+            if(flag){
+                break;
+            }
+        }
+    }
+}
 ```
