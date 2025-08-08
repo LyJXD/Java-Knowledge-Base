@@ -1,26 +1,21 @@
 ## 冒泡排序
 ```java
-public class Bubble {
-    public static void bubbleSort(int[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n - 1; i++) {
-            for (int j = 0; j < n - i - 1; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    // 交换arr[j+1]和arr[j]
-                    int temp = arr[j];
-                    arr[j] = arr[j + 1];
-                    arr[j + 1] = temp;
-                }
-            }
-        }
-    }
-    
-    public static void main(String[] args) {
-        int[] arr = {5, 2, 8, 3, 1, 6};
-        int[] expectedArr = {1, 2, 3, 5, 6, 8};
-        Bubble.bubbleSort(arr);
-        System.out.println("arr = " + Arrays.toString(arr));
-        Assertions.assertArrayEquals(expectedArr, arr);
-    }
+public static void  BubbleSort(int[] arr){
+	//第一层for循环,用来控制冒泡的次数
+	for (int i = 1; i < arr.length; i++) {  
+		//第二层for循环,用来控制冒泡一层层到最后
+		for (int j = 0; j < arr.length-1; j++) { 
+			//如果前一个数比后一个数大,两者调换 ,意味着泡泡向上走了一层
+			if (arr[j] > arr[j+1] ){
+				int temp = arr[j];
+				arr[j] = arr[j+1];
+				arr[j+1] = temp;
+			}
+		}
+	}
 }
+```
+- 
+```
+
 ```
