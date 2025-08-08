@@ -40,6 +40,36 @@ public class Test {
 ```java
  类名称::静态方法名
 ```
+- **示例**
+```java
+public class Cook {
+	//这是一个静态方法，可以通过类名称进行调用
+	public static void makeFood(String food) {
+		System.out.println("将" + food + "做成可口饭菜");
+	}
+}
+
+//保姆接口
+@FunctionalInterface
+public interface Sitter {
+	//工作，将食材做为熟饭
+	public abstract void work(String food);
+}
+
+public class Lambda {
+	public static void main(String[] args) {
+		//使用Lambda
+		hireSitter(food -> System.out.println("将" + food + "做成可口饭菜"));
+		//方法引用，简化Lambda
+		hireSitter(  Cook::makeFood   );
+	}
+	// 雇佣一个保姆去做饭
+	public static void hireSitter(Sitter sitter) {
+		sitter.work("白菜");
+	}
+}
+
+```
 ### 实例方法引用
 
 ### 特定类型的方法引用
