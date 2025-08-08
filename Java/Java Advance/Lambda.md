@@ -90,14 +90,14 @@ public interface Sitter {
 public class MethodRef {
 	public static void main(String[] args) {
 		// Lambda
-		method(food -> System.out.println("将" + food + "做成可口的饭菜"));
+		hireSitter(food -> System.out.println("将" + food + "做成可口的饭菜"));
 		
 		// 方法引用，引用了cook对象当中的成员方法makeFood
 		Cook cook  = new Cook();
-		method(cook::makeFood);
+		hireSitter(cook::makeFood);
 	}
 	
-	public static void method(Sitter sitter) {
+	public static void hireSitter(Sitter sitter) {
 		sitter.work("土豆");
 	}
 }
@@ -132,6 +132,16 @@ System.out.println(Arrays.toString(s));
 类名::new
 ```
 - **示例**
-```
-
+```java
+public class ConstructorReferenceExample {
+    public static void main(String[] args) {
+        // 使用构造函数引用
+        Supplier<StringBuilder> supplier = StringBuilder::new;
+        // 创建新的 StringBuilder 实例
+        StringBuilder sb = supplier.get();
+        sb.append("Hello, ");
+        sb.append("World!");
+        System.out.println(sb.toString());
+    }
+}
 ```
