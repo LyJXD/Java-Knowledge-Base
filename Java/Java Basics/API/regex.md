@@ -64,7 +64,7 @@ return email.matches("^[A-Za-z0-9._-]{4,20}@" +
 - **正则替换应用**
     - 使用正则表达式将字符串中的手机号中间4位替换为`****`：
         `String input = "我的电话是13812345678，备用电话是15987654321"`
-    - 期望输出: 
+    - 期望输出：
 	    `我的电话是138****5678，备用电话是159****4321` 
 ```java
 public static void main(String[] args) {  
@@ -87,7 +87,25 @@ public static void main(String[] args) {
 ```
 - **日志分析系统**
 - 从以下格式的日志中提取 IP、时间
+	`String log = "192.168.1.1 - - [10/Oct/2023:13:55:36 +0800] \"GET /api/user HTTP/1.1\" 200 1234";`
 - 使用正则表达式提取后，按状态码分组统计次数
+```java
+public static void main(String[] args) {
+    String log = "192.168.1.1 - - [10/Oct/2023:13:55:36 +0800] \"GET /api/user HTTP/1.1\" 200 1234";
+    String regexIp = "\\d{3}.\\d{3}.\\d.\\d";
+    String regexTime = "(0[1-9]|[1-2][0-9]|3[0-1])/[A-Za-z]{3}/\\d{4}:([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]) \\+\\d{4}";
+    Pattern patternIp = Pattern.compile(regexIp);
+    Pattern patternTime = Pattern.compile(regexTime);
+    Matcher matchIp = patternIp.matcher(log);
+    Matcher matchTime = patternTime.matcher(log);
+    while (matchIp.find()) {
+        System.out.println(matchIp.group());
+    }
+    while (matchTime.find()) {
+        System.out.println(matchTime.group());
+    }
+}
+```
 - **数据清洗工具**
 	- 设计一个方法，接收字符串和正则表达式数组：
 	    - 依次应用每个正则表达式进行替换
