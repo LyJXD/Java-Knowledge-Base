@@ -63,8 +63,9 @@ return email.matches("^[A-Za-z0-9._-]{4,20}@" +
 ```
 - **正则替换应用**
     - 使用正则表达式将字符串中的手机号中间4位替换为`****`：
-        String input = "我的电话是13812345678，备用电话是15987654321";  
-        // 期望输出: "我的电话是138***\*5678，备用电话是159***\*4321"  
+        `String input = "我的电话是13812345678，备用电话是15987654321"`
+    - 期望输出: 
+	    `我的电话是138****5678，备用电话是159****4321` 
 ```java
 public static void main(String[] args) {  
 	String input = "我的电话是13812345678, 备用电话是15987654321";  
@@ -82,5 +83,28 @@ public static void main(String[] args) {
 	String input = "It's a test-string, with:some;punctuation!";  
 	String[] result = input.split("[^\\w'-]+");  
 	System.out.println(Arrays.toString(result));  
+}
+```
+- **日志分析系统**
+- 从以下格式的日志中提取 IP、时间
+- 使用正则表达式提取后，按状态码分组统计次数
+- **数据清洗工具**
+	- 设计一个方法，接收字符串和正则表达式数组：
+	    - 依次应用每个正则表达式进行替换
+	    - 返回最终清洗后的字符串
+```java
+public static void main(String[] args) {
+    String input = "用户电话: 138-1234-5678, 邮箱: user@example.com";
+    String[] regexes = {"\\d{4}", "\\w+@"};
+    String[] replacements = {"****", "***@"};
+    String result = replaceByRegex(input, regexes, replacements);
+    System.out.println(result);
+}
+
+public static String replaceByRegex(String input, String[] regexes, String[] replacements) {
+    for (int i = 0; i < regexes.length; i++) {
+        input = input.replaceAll(regexes[i], replacements[i]);
+    }
+    return input;
 }
 ```
