@@ -48,3 +48,39 @@
 | \W       | \w的反义            |
 | \x       | 匹配一个十六进制数字       |
 | \0       | 匹配一个八进制数字        |
+### 案例
+- **复杂邮箱验证**
+    - 编写正则表达式验证以下邮箱规则：
+        - 用户名部分：4-20位，可包含字母、数字、下划线、点、横线
+        - 域名部分：2-20位字母数字和横线
+        - 顶级域名：2-10位字母
+        - 可选子域名：最多两级
+```java
+return email.matches("^[A-Za-z0-9._-]{4,20}@" +  
+            "[A-Za-z0-9-]{2,20}" +  
+            "(\\.[A-Za-z0-9-]{2,20})?" +  
+            "\\.[A-Za-z]{2,10}$");
+```
+- **正则替换应用**
+    - 使用正则表达式将字符串中的手机号中间4位替换为`****`：
+        String input = "我的电话是13812345678，备用电话是15987654321";  
+        // 期望输出: "我的电话是138***\*5678，备用电话是159***\*4321"  
+```java
+public static void main(String[] args) {  
+	String input = "我的电话是13812345678, 备用电话是15987654321";  
+	String regex = "(\\d{3})\\d{4}(\\d{4})";  
+	String result = input.replaceAll(regex, "$1****$2");    // $ -> 捕获（）分组  
+	System.out.println(result);  
+}
+```
+- **正则切割复杂字符串**
+    - 使用正则表达式切割以下字符串为单词数组（考虑连字符和撇号）：
+        String input = "It's a test-string, with:some;punctuation!";  
+        // 期望输出: \["It's", "a", "test-string", "with", "some", "punctuation"]  
+```java
+public static void main(String[] args) {  
+	String input = "It's a test-string, with:some;punctuation!";  
+	String[] result = input.split("[^\\w'-]+");  
+	System.out.println(Arrays.toString(result));  
+}
+```
