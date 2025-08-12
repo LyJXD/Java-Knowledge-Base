@@ -13,18 +13,23 @@
 编译时异常是 `Exception` 及其子类(除了 `RuntimeException` )，在编译时期抛出的异常，在编译期间检查程序是否可能会出现问题，如果可能会有，则预先防范：捕获声明。
 - **常见错误**
 	1. FileNotFoundException：未找到文件。
-	2. 
+	2. IOException：输入输出操作期间可能发生的错误或异常情况。
 ### 运行时异常（RuntimeException）
 运行时异常是用 `RuntimeException` 类表示的，它描述的是程序设计错误，例如，错误的类型转换、访问一个越界数组或数值错误。
 `RuntimeException` 是那些可能在Java虚拟机正常运行期间抛出的异常的超类，可能在执行方法期间抛出但未被捕获的 `RuntimeException` 的任何子类都无需在 `throws` 子句中进行声明，指的就是这些问题不需要提前被预防（本质上也可以的，只不过没必要），因为只有在真正运行的时候才能发现是否发生问题，一旦在运行期间发生了问题，则一般不会修正，程序直接终端。
 - **常见错误**
 	1. ArithmeticException：一个整数除以0。	
-	2. NullPointerException：对某个 null 的对象调用方法或字段。
+	2. NullPointerException：对某个 `null` 的对象调用方法或字段。
 	3. ArrayIndexOutOfBoundsException：数组索引越界。
 
 ## 处理编译时异常
 ### 声明异常
-
+在Java中，当前执行的语句必属于某个方法。Java解释器调用 `main` 方法开始执行一个程序。每个方法都必须声明它可能抛出的必检异常的类型，这称为声明异常，只对编译时异常进行声明，告知方法的调用者有异常。
+为了在方法中声明一个异常，就要在方法头中使用关键字 `throws` ，如果方法可能会抛出多个异常，就可以在关键字 `throws` 后添加一个用逗号分隔的异常列表。
+- **示例**
+```java
+public void myMethodO throws Exceptionl, Exception2, …, ExceptionN
+```
 ### 抛出异常
 
 ### 捕获异常
