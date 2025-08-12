@@ -6,14 +6,21 @@
 ### 系统错误（Error）
 系统錯误是Java虚拟机([[JVM]])抛出的，用 `Error` 类表示。`Error` 类描述的是内部系统错误。这样的错误很少发生。如果发生，除了通知用户以及尽量稳妥地终止程序外，几乎什么也不能做。
 - **常见错误**
-	1. OutOfMemoryError ：内存耗尽。
-	2. NoClassDefFoundError ：无法加载某个Class。
-	3. StackOverflowError ：栈溢出。
+	1. OutOfMemoryError：内存耗尽。
+	2. NoClassDefFoundError：无法加载某个Class。
+	3. StackOverflowError：栈溢出。
 ### 编译时异常（Exception）
 编译时异常是 `Exception` 及其子类(除了 `RuntimeException` )，在编译时期抛出的异常，在编译期间检查程序是否可能会出现问题，如果可能会有，则预先防范：捕获声明。
+- **常见错误**
+	1. FileNotFoundException：未找到文件。
+	2. 
 ### 运行时异常（RuntimeException）
 运行时异常是用 `RuntimeException` 类表示的，它描述的是程序设计错误，例如，错误的类型转换、访问一个越界数组或数值错误。
 `RuntimeException` 是那些可能在Java虚拟机正常运行期间抛出的异常的超类，可能在执行方法期间抛出但未被捕获的 `RuntimeException` 的任何子类都无需在 `throws` 子句中进行声明，指的就是这些问题不需要提前被预防（本质上也可以的，只不过没必要），因为只有在真正运行的时候才能发现是否发生问题，一旦在运行期间发生了问题，则一般不会修正，程序直接终端。
+- **常见错误**
+	1. ArithmeticException：一个整数除以0。	
+	2. NullPointerException：对某个 null 的对象调用方法或字段。
+	3. ArrayIndexOutOfBoundsException：数组索引越界。
 
 ## 处理编译时异常
 ### 声明异常
