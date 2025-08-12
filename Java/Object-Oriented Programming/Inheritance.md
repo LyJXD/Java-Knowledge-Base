@@ -139,7 +139,8 @@ public class test {
 ```
 - **toString()**  
 	1. 当我们打印一个对象的引用时，实际是默认调用这个对象的toString()方法。
-	2. 当打印的对象所在类没有重写Object中的toString()方法时，默认调用的是Object类中toString()方法，返回此对象所在的类及对应的堆空间对象实体的首地址值。
+	2. 当打印的对象所在类没有重写 `Object` 类中的 `toString()` 方法时，默认调用的是 `Object` 类中 `toString()` 方法，返回对象的类名和哈希码值的组合。
+	3. `Object` 的 `hashCode()` 是一个 `native` 方法，默认返回的是内存地址。`toString()` 方法打印的不是 `hashCode()` 返回的原值，而是经过转化的16进制字符。
 ```java
 // Obeject类源代码
 public String toString() {
