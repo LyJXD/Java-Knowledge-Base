@@ -41,15 +41,15 @@ throw new IllegalArgumentException("Wrong Argument");
 ### 捕获异常
 当抛出一个异常时，可以在 `try catch` 块中捕获和处理它。
 **try语句块中**放的是可能出现问题的代码。
-**catch语句块中**：放的是出现问题并捕获后，处理问题的代码code，如果问题在try语句块中没有出现 则catch中不会运行。
-**finally语句块中**：放的是不管问题异常是否产生 都要执行的代码code。
+**catch语句块中**放的是出现问题并捕获后，处理问题的代码code，如果问题在try语句块中没有出现 则catch中不会运行。
+**finally语句块中**放的是不管问题异常是否产生 都要执行的代码code。
 - **示例**
 ```java
 try {
     codeA
     throw ...
     codeB
-} catch(Exception e) { 
+} catch (Exception e) { 
 	code 
 } finally { 
 	code//关闭资源（IO 数据库 网络），结尾处理的一些工作 
