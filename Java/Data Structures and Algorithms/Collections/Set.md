@@ -5,7 +5,32 @@ Set接口作为Java集合框架的核心组成部分，与List形成鲜明对比
 - **特点**
 	1. 插入和查询效率高。  
 	2. 非线程安全。  
-	3. 自动去重。
+	3. 无序，无索引，自动去重。
+- **使用场景**
+	1. 存储不需要顺序的唯一元素。
+	2. 快速查找、插入、删除操作。
+- **示例**
+```java
+Set<String> set = new HashSet<>();
+set.add("c");
+set.add("a");
+set.add("b");
+System.out.println(set); // 输出顺序不确定，如 [a, b, c] 或 [c, a, b]
+```
 ## LinkedHashSet
-
+`LinkedHashSet` 是一个继承 `HashSet` ，底层基于 `LinkedHashMap` 实现的Set集合，利用 `LinkedHashMap` 的双向链表结构保持插入或访问顺序。
+- **特点**
+	1. 保留插入顺序，同时支持高效的增删查。  
+	2. 严格维护FIFO顺序。
+	3. 无索引，自动去重。  
+- **使用场景**
+	需要保持插入顺序或访问顺序，同时需要去重功能。
+- **示例**
+```java
+Set<String> set = new LinkedHashSet<>();
+set.add("c");
+set.add("a");
+set.add("b");
+System.out.println(set); // 输出顺序固定：[c, a, b]
+```
 ## TreeSet
