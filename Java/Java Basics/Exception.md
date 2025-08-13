@@ -32,4 +32,26 @@ public void myMethodO throws Exceptionl, Exception2, …, ExceptionN
 ```
 ### 抛出异常
 检测到错误的程序可以创建一个合适的异常类型的实例并抛出它，这就称为抛出一个异常。
+声明异常的关楗字是 `throws` ，抛出异常的关键字是 `throw` 。
+- **示例**
+```java
+// 发现传递给方法的参数与方法的合约不符,创建 IllegalArgumentException 的一个实例并抛出它
+throw new IllegalArgumentException("Wrong Argument");
+```
 ### 捕获异常
+当抛出一个异常时，可以在 `try catch` 块中捕获和处理它。
+**try语句块中**放的是可能出现问题的代码。
+**catch语句块中**：放的是出现问题并捕获后，处理问题的代码code，如果问题在try语句块中没有出现 则catch中不会运行。
+**finally语句块中**：放的是不管问题异常是否产生 都要执行的代码code。
+- **示例**
+```java
+try {
+    codeA
+    throw ...
+    codeB
+} catch(Exception e) { 
+	code 
+} finally { 
+	code//关闭资源（IO 数据库 网络），结尾处理的一些工作 
+}
+```
