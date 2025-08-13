@@ -9,6 +9,44 @@ Map提供了一种基于键进行查找和操作的数据结构。Map接口的�
 ## HashMap
 `HashMap` 在JDK1.8之后底层数据结构是**数组+链表+红黑树**。
 链表是为了解决哈希冲突的，当数组中发生哈希冲突的时候，会使用拉链法将冲突的元素连成一个链表，一个链表中都是冲突的元素。当链表长度过长的时候，会将链表自动转换为红黑树，以提高检索性能。在 Java 8 中，当链表的长度大于 8 的时候，链表就会转换为红黑树。当红黑树的节点个数小于 6 的时候，就会将红黑树转换为链表。
+- **示例**
+```java
+public class MapLearn {  
+    public static void main(String[] args) {  
+        Map<String, Integer> map = new HashMap<>();  
+        map.put("张三", 18);  
+        map.put("李四", 19);  
+        map.put("王五", 17);  
+        map.put("赵六", 20);  
+        System.out.println(map);  
+        System.out.println(map.size());  
+        System.out.println(map.isEmpty());  
+        System.out.println(map.get("张三"));  
+        System.out.println(map.containsKey("张三"));  
+  
+        // 遍历  
+        // 获取所有的键，通过遍历键获取值  
+        Set<String> keys = map.keySet();  
+        for (String key : keys) {  
+            System.out.println("键：" + key + " 值：" + map.get(key));  
+        }  
+        System.out.println("--------------------");  
+        // 获取所有的键值对，通过遍历键值对获取键和值  
+        Set<Map.Entry<String, Integer>> entries = map.entrySet();  
+        for (Map.Entry<String, Integer> entry : entries) {  
+            System.out.println("键：" + entry.getKey() + " 值：" + entry.getValue());  
+        }  
+        System.out.println("--------------------");  
+        // 使用匿名内部类，lambda表达式  
+        map.forEach((new BiConsumer<String, Integer>() {  
+            @Override            public void accept(String key, Integer value) {  
+                System.out.println("键：" + key + " 值：" + value);  
+            }  
+        }));  
+        map.forEach((key, value) -> System.out.println("键：" + key + " 值：" + value)); 
+    }  
+}
+```
 
 ## LinkedHashMap
 `LinkedHashMap` 的底层结构是基于 `HashMap` 实现的，但它在 `HashMap` 的基础上添加了**双向链表**来维护顺序。每个节点在哈希表中存储数据时，不仅存储了键值对，还存储了指向前一个节点和后一个节点的引用。
