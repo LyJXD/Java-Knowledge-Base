@@ -8,7 +8,6 @@ List是一种常用的集合类型，它可以存储任意类型的对象，也�
 	1. 有序性：List中的元素是按照添加顺序进行存放的。有下标，下标从0开始。
 	2. 可重复性：List中可以存储重复的元素。
 	3. List接口包括Collection接口的所有方法，因为Collection是List的超级接口。
-
 ## ArrayList
 `ArrayList` 实现了 `List` 接口。它使用动态数组来存储元素，因此能够快速地进行随机访问和迭代操作。与 `LinkedList` 相比，`ArrayList` 提供了更快的查找和更新操作，但在插入和删除大量元素时性能较差。
 - **特点**
@@ -58,7 +57,8 @@ public class ArrayListExample {
         System.out.println("Cloned list: " + clonedList);
         
         // 线程安全的列表
-        List<String> synchronizedList = Collections.synchronizedList(new ArrayList<>(list));
+        List<String> synchronizedList = 
+	        Collections.synchronizedList(new ArrayList<>(list));
         
         synchronized (synchronizedList) {
             Iterator<String> iterator = synchronizedList.iterator();
@@ -79,7 +79,6 @@ public class ArrayListExample {
 ### 常用方法
 - **示例**
 ```java
-
 public class LinkedListExample {
     public static void main(String[] args) {
         LinkedList<String> list = new LinkedList<>();

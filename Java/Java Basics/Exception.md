@@ -28,7 +28,7 @@
 为了在方法中声明一个异常，就要在方法头中使用关键字 `throws` ，如果方法可能会抛出多个异常，就可以在关键字 `throws` 后添加一个用逗号分隔的异常列表。
 - **示例**
 ```java
-public void myMethodO throws Exceptionl, Exception2, …, ExceptionN
+public void myMethod throws Exceptionl, Exception2, …, ExceptionN
 ```
 ### 抛出异常
 检测到错误的程序可以创建一个合适的异常类型的实例并抛出它，这就称为抛出一个异常。
