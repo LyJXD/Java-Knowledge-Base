@@ -31,5 +31,5 @@
 public void myMethodO throws Exceptionl, Exception2, …, ExceptionN
 ```
 ### 抛出异常
-
+检测到错误的程序可以创建一个合适的异常类型的实例并抛出它，这就称为抛出一个异常。
 ### 捕获异常
