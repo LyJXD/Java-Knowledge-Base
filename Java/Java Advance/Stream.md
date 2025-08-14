@@ -9,11 +9,24 @@ Stream的主要作用是进行数据的转换、筛选、聚合等操作，可�
 ### Collection集合创建
 应用中最常用的一种
 ```java
-// java.util.Collection.stream()
+// 使用java.util.Collection.stream()
 List<Integer> integerList = new ArrayList<>(Arrays.asList(1,2,3,4,5));  
 Stream<Integer> listStream = integerList.stream();
 ```
 ### Array数组创建
 ```java
+// 使用java.util.Arrays.stream(T[] array)
+int[] array={1,3,5,6,8};
+IntStream stream = Arrays.stream(array);
+```
+### Stream方法创建
+```java
+// 使用Stream的静态方法：of()、iterate()、generate()
+Stream<Integer> stream1 = Stream.of(1, 2, 3, 4, 5, 6);
 
+Stream<Integer> stream2 = Stream.iterate(1, x -> x + 2).limit(3);  
+stream2.forEach(System.out::println);  // 1 3 5
+  
+Stream<Double> stream3 = Stream.generate(() -> Math.random() * 10).limit(5);  
+stream3.forEach(System.out::println);
 ```
