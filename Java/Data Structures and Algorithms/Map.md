@@ -55,5 +55,25 @@ public class MapLearn {
 红黑树是一种自平衡的二叉查找树，每个节点都只能是红色或者黑色，根节点是黑色，每个叶子节点是黑色的。如果一个结点是红的，则它两个子节点都是黑的。从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。
 - **示例**
 ```java
-
+public class TreeMapLearn {  
+    public static void main(String[] args) {  
+        Map<Integer, String> map1 = Map.of(18, "张三", 19, "李四", 17, "王五");  
+        // 存储基本类型的键值对不需要指定排序规则  
+        TreeMap<Integer, String> treeMap1 = new TreeMap<>(map1);  
+        System.out.println(treeMap1);   // {10=李四, 20=王五, 30=张三}  
+        
+	    // Student类省略
+	    Map<Student, String> map2 = Map.of(  
+                new Student("张三", 18), "上海",  
+                new Student("李四", 19), "浙江",  
+                new Student("王五", 17), "北京");  
+        // 存储对象类型的键值对必须指定排序规则  
+        TreeMap<Student, String> treeMap2 = new TreeMap<>(new TreeMap<>((o1, o2) ->  
+                o1.getAge() - o2.getAge() == 0 ? 
+                o1.getName().compareTo(o2.getName()) : o1.getAge() - o2.getAge()  
+        ));  
+        treeMap2.putAll(map2);  
+        treeMap2.forEach((k,v) -> System.out.println(k + ":" + v));  
+    }  
+}
 ```
