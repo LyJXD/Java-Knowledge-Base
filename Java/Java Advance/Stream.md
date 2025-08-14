@@ -5,4 +5,15 @@ Stream的主要作用是进行数据的转换、筛选、聚合等操作，可�
 	2. stream不会改变数据源，通常情况下会产生一个新的集合或一个值。
 	3. stream具有延迟执行特性，只有调用终端操作时，中间操作才会执行。
 
-## Stream的创建
+## Stream流创建
+### Collection集合创建
+应用中最常用的一种
+```java
+// java.util.Collection.stream()
+List<Integer> integerList = new ArrayList<>(Arrays.asList(1,2,3,4,5));  
+Stream<Integer> listStream = integerList.stream();
+```
+### Array数组创建
+```java
+
+```
