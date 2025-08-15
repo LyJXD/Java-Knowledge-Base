@@ -30,3 +30,5 @@ stream2.forEach(System.out::println);  // 1 3 5
 Stream<Double> stream3 = Stream.generate(() -> Math.random() * 10).limit(5);  
 stream3.forEach(System.out::println);
 ```
+
+## Stream的使用
