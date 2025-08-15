@@ -18,13 +18,49 @@
 	3. `public File(File parent, String child)` 通过指定父 `File` 对象和子路径来创建 `File` 对象。
 - **示例**
 ```java
-// 绝对路径  
-File file01 = new File("E:\\Work Files\\Dev\\Java\\Learning Projects\\JavaSE_Advance\\day11\\lib");  
-
-// 相对路径  
-File file02 = new File("day11\\lib");  
-
-File file03 = new File("E:\\Work Files\\Dev\\Java\\Learning Projects\\JavaSE_Advance\\day11\\" + "lib");  
+public class Demo {  
+    public static void main(String[] args) {  
+        // 绝对路径    
+		File file01 = new File("E:\\Work Files\\Dev\\Java\\Learning Projects\\JavaSE_Advance\\day11\\lib");  
+		
+        // 相对路径    
+		File file02 = new File("day11\\lib");  
+		
+        File file03 = new File("E:\\Work Files\\Dev\\Java\\Learning Projects\\JavaSE_Advance\\day11\\" + "lib");  
+        
+        File file04 = new File(file03 + "test.txt");  
+        findFile("Demo.java", new File("day11"));  
+        deleteFile(new File("lib"));  
+    } 
+     
+    public static void findFile(String fileName, File file){  
+	    // 获取当前目录下的所有文件
+        File[] files = file.listFiles();  
+        if (files == null){  
+            return;  
+        }  
+        for (File f : files){  
+            if (f.isFile() && f.getName().equals(fileName)){  
+                System.out.println(f.getAbsoluteFile());  
+            }else if (f.isDirectory()){  
+                findFile(fileName, f);  
+            }  
+        }  
+    }  
   
-File file04 = new File(file03 + "test.txt");  
+    public static void deleteFile(File file){  
+        File[] files = file.listFiles();  
+        if (files == null){  
+            return;  
+        }  
+        for (File f : files){  
+            if (f.isFile()){  
+                System.out.println(f.delete());  
+            }else if (f.isDirectory()){  
+                deleteFile(f);  
+            }  
+        }  
+        System.out.println(file.delete());  
+    }  
+}
 ```
