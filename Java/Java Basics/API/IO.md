@@ -1,3 +1,4 @@
+![[IO流.png]]
 ## 输入输出流
 ### 字节流
 输入流(Input Stream)与输出流(Output Stream)合称为数据流(Data Stream)。
