@@ -7,13 +7,13 @@
 所有的条件表达式结果都是boolean类型。
 #### 单分支语句
 - **语法**  
-```
+```java
 if(条件表达式) {
 	语句块;
 }
 ```
 - **示例**
-```
+```java
 Scanner sc = new Scanner(System.in);  
 int a = sc.nextInt();  
 int b = sc.nextInt();  
@@ -24,7 +24,7 @@ if(a > b) {
 ```
 #### 双分支语句
 - **语法**  
-```
+```java
 if(条件表达式){
 	语句块A;
 }else{
@@ -32,7 +32,7 @@ if(条件表达式){
 }
 ```
 - **示例**
-```
+```java
 Scanner sc = new Scanner(System.in);
 int num = sc.nextInt();  
   
@@ -44,7 +44,7 @@ if(num % 2 == 0) {
 ```
 #### 多分支语句
 - **语法**  
-```
+```java
 if(条件表达式A) {
 	语句块A;
 }else if(条件表达式B) {
@@ -58,7 +58,7 @@ else if(条件表达式N) {
 }
 ```
 - **示例**
-```
+```java
 Scanner sc = new Scanner(System.in);
 int score = sc.nextInt();  
   
@@ -74,7 +74,7 @@ if ( score >= 90 ) {
 ```
 ### switch分支语句
 - **语法**  
-```
+```java
 switch(表达式) {
 	case 值1:
 		语句块1;
@@ -89,7 +89,7 @@ switch(表达式) {
 ```       
 switch(值)，值的取值类型可以是byte、short、int、char、string
 - **示例**
-```
+```java
 Scanner sc = new Scanner(System.in);  
 System.out.println("只能输入1,2,3：");  
 int a = sc.nextInt();  
@@ -109,7 +109,7 @@ switch(a) {
 - **穿透现象**  
 	当一个case分支没有[[#break]]语句时，即使该case分支的条件满足，程序也会继续执行下一个case分支的代码，直到遇到break语句或switch语句结束。
 - **示例**
-```
+```java
 Scanner sc = new Scanner(System.in);  
 System.out.println("Enter date you want to check:");  
 int day = sc.nextInt();  
@@ -132,14 +132,14 @@ switch (day) {
 ## 循环结构
 ### for循环
 - **语法**  
-```
+```java
 for (初始化循环条件; 循环条件表达式; 迭代部分 ){  
     循环体;  
 }
 ```
 执行顺序:初始化循环条件->循环条件表达式->循环体->迭代部分
 - **示例**  
-```
+```java
 int sum = 0;  
 for (int x = 0; x < 10; x++) {  
     sum += x;  
@@ -154,7 +154,7 @@ System.out.println(sum);
 	1. 先判断条件，再执行循环体。  
 	2. 不确定循环次数，依赖条件。
 - **语法**
-```
+```java
 while (循环条件部分){  
     循环体部分;   
 	迭代部分;  
@@ -162,7 +162,7 @@ while (循环条件部分){
 ```
 条件表达式返回值类型为boolean类型，只要条件表达式的结果为true,则一直执行语句块。
 - **示例**
-```
+```java
 double height = 8848860.0;  
 double paperHeight = 0.1;  
   
@@ -180,14 +180,14 @@ System.out.println("最终的纸张高度为" + paperHeight + "mm");
 	1. 先执行循环体，再判断条件。  
 	2. 至少会执行一次循环体。
 - **语法**  
-```
+```java
 do {  
     循环体部分;  
     迭代部分;  
 } while (循环条件部分);
 ```
 - **示例**  
-```
+```java
 Scanner sc = new Scanner(System.in);  
 String answer = "";  
 do {  

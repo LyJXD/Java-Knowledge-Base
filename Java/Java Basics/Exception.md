@@ -40,10 +40,11 @@ throw new IllegalArgumentException("Wrong Argument");
 ```
 ### 捕获异常
 当抛出一个异常时，可以在 `try catch` 块中捕获和处理它。
-**try语句块中**放的是可能出现问题的代码。
-**catch语句块中**放的是出现问题并捕获后，处理问题的代码code，如果问题在try语句块中没有出现 则catch中不会运行。
-**finally语句块中**放的是不管问题异常是否产生 都要执行的代码code。
-- **示例**
+- **`try catch finally`**
+	1. **try语句块中**放的是可能出现问题的代码。
+	2. **catch语句块中**放的是出现问题并捕获后，处理问题的代码code，如果问题在try语句块中没有出现 则catch中不会运行。
+	3. **finally语句块中**放的是不管问题异常是否产生 都要执行的代码code。
+- **语法**
 ```java
 try {
     codeA
@@ -53,5 +54,56 @@ try {
 	code 
 } finally { 
 	code//关闭资源（IO 数据库 网络），结尾处理的一些工作 
+}
+```
+- **示例**
+```java
+public static void main(String[] args) throws IOException {  
+    FileInputStream fis = null;  
+    FileOutputStream fos = null;  
+    try {  
+        fis = new FileInputStream("E:\\a.txt");  
+        fos = new FileOutputStream("E:\\b.txt");  
+        byte[] bytes = new byte[1024];  
+        int len;  
+        while ((len = fis.read(bytes)) != -1) {  
+            fos.write(bytes, 0, len);  
+        }  
+    } catch (Exception e) {
+        System.out.println("出现了异常");  
+    } finally {
+        if (fis != null) {  
+            fis.close();  
+        }  
+        if (fos != null) {  
+            fos.close();  
+        }  
+    }  
+}
+```
+- **`try with resource`**
+	JDK7开始提供了更简单的资源释放方式
+- **语法**
+```java
+try (ResourceType resource = new ResourceType()) {
+    // 使用资源
+} catch (ExceptionType e) {
+    // 处理异常
+}
+```
+- **示例**
+```java
+public static void main(String[] args) throws IOException {  
+    // fis.close() fos.close()自动执行  
+    try (FileInputStream fis = new FileInputStream("E:\\a.txt");  
+         FileOutputStream fos = new FileOutputStream("E:\\b.txt")) {  
+        byte[] bytes = new byte[1024];  
+        int len;  
+        while ((len = fis.read(bytes)) != -1) {  
+            fos.write(bytes, 0, len);  
+        }  
+    } catch (Exception e) {  
+        System.out.println("出现了异常");  
+    }  
 }
 ```
