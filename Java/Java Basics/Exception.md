@@ -82,7 +82,12 @@ public static void main(String[] args) throws IOException {
 }
 ```
 - **`try with resource`**
-	JDK7开始提供了更简单的资源释放方式
+	1. JDK7开始提供的更简单的资源释放方式。
+	2. `try-with-resources` 主要用于需要显式关闭的资源管理，常见的场景包括：文件操作、数据库连接、网络通信等。
+- **特点**
+	1. **简化代码** 省去手动关闭资源的代码，逻辑更清晰。
+	2. **减少错误** 自动处理资源关闭，避免忘记关闭资源或处理 `finally` 块中出现的异常。
+	3. **提升性能** 减少资源泄露，节约系统资源。
 - **语法**
 ```java
 try (ResourceType resource = new ResourceType()) {
