@@ -99,3 +99,7 @@ public class Demo {
     }  
 }
 ```
+
+## 特殊文件类型
+### Properties
+### XML
