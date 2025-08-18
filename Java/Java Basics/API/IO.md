@@ -146,7 +146,7 @@ public class Demo {
         OFF 代表不记录任何日志  
         debug 支持debug及其以上的日志（debug、info、warn、error）  
         warn 支持warn及其以上的日志（warn、error）  
-        debug < info < warn < error    
+        trace < debug < info < warn < error    
 	-->    
 	<root level="debug">  
         <appender-ref ref="CONSOLE"/>  
