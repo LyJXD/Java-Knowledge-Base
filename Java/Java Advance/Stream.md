@@ -34,5 +34,15 @@ stream3.forEach(System.out::println);
 ## Stream的使用
 ### 中间操作
 - **Filter**
-
+	`filter()` 方法接受一个谓词（一个返回 `boolean` 值的函数），并返回一个流，其中仅包含通过该谓词的元素。
+```java
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");
+        List<String> collect = names.stream()
+	        .filter(item -> item.length() > 4).collect(Collectors.toList());
+        System.out.println(collect);
+    }
+}
+```
 ### 终止操作
