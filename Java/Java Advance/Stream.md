@@ -33,33 +33,46 @@ stream3.forEach(System.out::println);
 
 ## Stream的使用
 ### 中间操作
-- **Filter（过滤）**
+- **filter（过滤）**
 	`filter()` 方法接受一个谓词（一个返回 `boolean` 值的函数），并返回一个流，其中仅包含通过该谓词的元素。
 ```java
-public class Main {
-    public static void main(String[] args) {
-        List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");
-        List<String> collect = names.stream()
-	        .filter(item -> item.length() > 4).collect(Collectors.toList());
-        System.out.println(collect);
-    }
-}
+List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");  
+List<String> collect = names.stream()  
+        .filter(item -> item.length() > 4).collect(Collectors.toList());  
+System.out.println(collect);    // [Brian, Charles, David]
 ```
-- **Map（转换）**
+- **limit（限制）**
+	`limit()` 方法可以将流限制为指定的元素数。
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
+List<Integer> collect = numbers.stream().limit(3).collect(Collectors.toList());  
+System.out.println(collect);    //[1, 2, 3]
+```
+- **skip（跳过）**
+	`skip()` 方法可跳过前N个元素。
+```java
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
+List<Integer> collect = numbers.stream().skip(2).collect(Collectors.toList());  
+System.out.println(collect);    // [3, 4, 5]
+```
+- **map（转换）**
 	`map()` 方法可将一个流的元素转换为另一个流。它接受一个函数，该函数映射流中的每个元素转到另一个元素。
 ```java
-public class Main {
-    public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> collect = numbers.stream()
-	        .map(n -> {
-	            n = n * 2;
-	            return n;
-	        }).collect(Collectors.toList());
-        for (Integer integer : collect) {
-            System.out.println("integer = " + integer);
-        }
-    }
-}
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
+List<Integer> collect = numbers.stream()  
+        .map(n -> {  
+            n = n * 2;  
+            return n;  
+        }).collect(Collectors.toList());  
+for (Integer integer : collect) {  
+    System.out.println("integer = " + integer);  
+}  
+// 输出  
+// integer = 2  
+// integer = 4  
+// integer = 6  
+// integer = 8  
+// integer = 10
 ```
+- 
 ### 终止操作
