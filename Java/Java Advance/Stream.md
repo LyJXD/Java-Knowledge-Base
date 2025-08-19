@@ -76,3 +76,82 @@ for (Integer integer : collect) {
 ```
 - 
 ### 终止操作
+
+## 案例
+![[Stream1.png]]
+```java
+public class Demo {  
+    public static void main(String[] args) {  
+        String info = "10001,张无忌,男,2023-07-22 11:11:12,东湖-黄鹤楼" +  
+	        "#10002,赵敏,女,2023-07-22 09:11:21,黄鹤楼-归元禅寺" +  
+	        "#10003,周芷若,女,2023-07-22 04:11:21,木兰文化区-东湖" +  
+	        "#10004,小昭,女,2023-07-22 08:11:21,东湖" +  
+	        "#10005,灭绝,女,2023-07-22 17:11:21,归元禅寺";
+	        
+        // 通过字符串截取 "#" 得到每一条学生信息字符串数组；  
+        String[] studentInfo = info.split("#");  
+        DateTimeFormatter formatter = 
+	        DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");  
+        
+        // 通过字符串截取 "," 得到每一个学生对应的属性字段的数组；  
+        List<Student> students = new ArrayList<>();  
+        for (String s : studentInfo) {  
+            String[] infoArray = s.split(",");  
+            Student student = new Student(
+	            Long.parseLong(infoArray[0]), 
+	            infoArray[1], 
+	            infoArray[2], 
+	            LocalDateTime.parse(infoArray[3], formatter), 
+	            infoArray[4]
+            );  
+            students.add(student);  
+            System.out.println(student);  
+        }  
+        
+        // 遍历学生集合，字符串截取"-"得到景点数组，多个景点用 "-" 连接的  
+        List<String> attractions = new ArrayList<>();  
+        for (Student s : students) {  
+            String[] attractionArray = s.getAttraction().split("-");  
+            attractions.addAll(Arrays.asList(attractionArray));  
+        }  
+        
+        // 遍历景点数组，利用 map 来完成景点的选择次数，key为景点名称，value为景点次数  
+        Map<String, Integer> attractionCountMap = new HashMap<>();  
+        for (String a : attractions) {  
+            if (attractionCountMap.containsKey(a)) {  
+                attractionCountMap.put(a, attractionCountMap.get(a) + 1);  
+            } else {  
+                attractionCountMap.put(a, 1);  
+            }  
+        }  
+        
+        // 遍历 map 集合打印景点名称和对应次数  
+        attractionCountMap.forEach(
+	        (attraction, count) -> System.out.println(attraction + ": " + count)
+        );  
+        
+        // 使用stream流找出最多选择的景点名称  
+        String maxAttraction = attractionCountMap.entrySet().stream()  
+                .max(Map.Entry.comparingByValue())  
+                .map(Map.Entry::getKey)  
+                .orElse("");  
+        System.out.println("最多选择的景点名称是：" + maxAttraction);  
+  
+        // 使用stream流找出哪些人没有选择这个景点  
+        System.out.print("没有选择这个景点的学生是:");  
+        students.stream()  
+                .filter(student -> !student.getAttraction()  
+                .contains(maxAttraction))  
+                .forEach(student->System.out.print(student.getName() + " "));  
+    }  
+}  
+  
+class Student {  
+    private Long id;  
+    private String name;  
+    private String gender;  
+    private LocalDateTime time;  
+    private String attraction;  
+	// 构造方法等略
+}
+```
