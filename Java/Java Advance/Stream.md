@@ -33,7 +33,7 @@ stream3.forEach(System.out::println);
 
 ## Stream的使用
 ### 中间操作
-- **Filter**
+- **Filter（过滤）**
 	`filter()` 方法接受一个谓词（一个返回 `boolean` 值的函数），并返回一个流，其中仅包含通过该谓词的元素。
 ```java
 public class Main {
@@ -42,6 +42,23 @@ public class Main {
         List<String> collect = names.stream()
 	        .filter(item -> item.length() > 4).collect(Collectors.toList());
         System.out.println(collect);
+    }
+}
+```
+- **Map（转换）**
+	`map()` 方法可将一个流的元素转换为另一个流。它接受一个函数，该函数映射流中的每个元素转到另一个元素。
+```java
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
+        List<Integer> collect = numbers.stream()
+	        .map(n -> {
+	            n = n * 2;
+	            return n;
+	        }).collect(Collectors.toList());
+        for (Integer integer : collect) {
+            System.out.println("integer = " + integer);
+        }
     }
 }
 ```
