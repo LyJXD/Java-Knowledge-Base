@@ -90,8 +90,11 @@ for (Integer integer : collect) {
 - **forEach（循环）**
 	`forEach()` 方法可将给定的方法应用于流中的每个元素。该方法是一种消费流的方式，不会返回值。
 ```java
-
+List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");
+names.stream().forEach(System.out::println);
 ```
+- **collect**
+	`collect()` 方法可以将流中的元素收集到一个集合中。
 ## 案例
 ![[Stream1.png]]
 ```java
@@ -155,8 +158,7 @@ public class Demo {
         // 使用stream流找出哪些人没有选择这个景点  
         System.out.print("没有选择这个景点的学生是:");  
         students.stream()  
-                .filter(student -> !student.getAttraction()  
-                .contains(maxAttraction))  
+                .filter(student -> !student.getAttraction().contains(maxAttraction))  
                 .forEach(student->System.out.print(student.getName() + " "));  
     }  
 }  

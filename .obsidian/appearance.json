@@ -2,5 +2,7 @@
   "theme": "obsidian",
   "cssTheme": "Things",
   "accentColor": "",
-  "textFontFamily": "Maple Mono,Comic Mono"
+  "textFontFamily": "Maple Mono,Comic Mono",
+  "baseFontSize": 16,
+  "baseFontSizeAction": true
 }
