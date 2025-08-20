@@ -95,8 +95,11 @@ names.stream().forEach(System.out::println);
 ```
 - **collect**
 	`collect()` 方法可以将流中的元素收集到一个集合中。
+```java
+
+```
 ## 案例
-![[Stream1.png]]
+![[StreamCase1.png]]
 ```java
 public class Demo {  
     public static void main(String[] args) {  
@@ -154,7 +157,7 @@ public class Demo {
                 .map(Map.Entry::getKey)  
                 .orElse("");  
         System.out.println("最多选择的景点名称是：" + maxAttraction);  
-  
+        
         // 使用stream流找出哪些人没有选择这个景点  
         System.out.print("没有选择这个景点的学生是:");  
         students.stream()  
