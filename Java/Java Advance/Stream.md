@@ -66,6 +66,18 @@ List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
 List<Integer> collect = numbers.stream().skip(2).collect(Collectors.toList());  
 System.out.println(collect);    // [3, 4, 5]
 ```
+- **distinct（去重）**
+	返回一个元素各异（根据流所生成元素的hashCode和equals方法实现）的流。
+```java
+List<Student> students = new ArrayList<>();
+students.stream()  
+        .filter(s -> s.getAge() >= 18)  
+        .filter(s -> s.getAge() <= 20)  
+        .sorted((o1, o2) -> o2.getAge() - o1.getAge())  
+        // 去重  
+        .distinct() // 对非基本类型的去重需要重写equals和hashCode方法  
+        .forEach(System.out::println);
+```
 - **map（转换）**
 	`map()` 方法可将一个流的元素转换为另一个流。它接受一个函数，该函数映射流中的每个元素转到另一个元素。
 ```java
