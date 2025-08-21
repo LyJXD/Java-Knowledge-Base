@@ -46,37 +46,46 @@ stream3.forEach(System.out::println);
 中间操作是返回一个新的流，并在返回的流中包含所有之前的操作结果。它们总是延迟计算，这意味着它们只会在终止操作时执行，这样可以最大限度地优化资源使用。
 - **filter（过滤）**
 	`filter()` 方法接受一个谓词（一个返回 `boolean` 值的函数），并返回一个流，其中仅包含通过该谓词的元素。
-```java
-List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");  
-List<String> collect = names.stream()  
-        .filter(item -> item.length() > 4).collect(Collectors.toList());  
-System.out.println(collect);    // [Brian, Charles, David]
-```
 - **limit（限制）**
 	`limit()` 方法可以将流限制为指定的元素数。
-```java
-List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
-List<Integer> collect = numbers.stream().limit(3).collect(Collectors.toList());  
-System.out.println(collect);    //[1, 2, 3]
-```
 - **skip（跳过）**
 	`skip()` 方法可跳过前N个元素。
-```java
-List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
-List<Integer> collect = numbers.stream().skip(2).collect(Collectors.toList());  
-System.out.println(collect);    // [3, 4, 5]
-```
 - **distinct（去重）**
 	返回一个元素各异（根据流所生成元素的hashCode和equals方法实现）的流。
+- **sorted（排序）**
+	1. sorted()->自然排序（从小到大），流中元素需实现Comparable接口。 
+	2. sorted(Comparator com)->定制排序。常用以下几种：
+		`list.stream().sorted(Comparator.reverseOrder())` 倒序排序
+		`list.stream().sorted(Comparator.comparing(Student::getAge))` 顺序排序
+		`list.stream().sorted(Comparator.comparing(Student::getAge).reversed())` 倒序排序
 ```java
-List<Student> students = new ArrayList<>();
+// 对元素进行升序排序  
+List<Double> list1 = new ArrayList<>(List.of(9.8, 4.5, 6.6, 3.1, 7.0));  
+list1.stream().filter(s -> s >= 6.0).sorted().forEach(System.out::println);  
+System.out.println("--------------------");  
+  
+// 按照指定规则进行排序  
+List<Student> students = new ArrayList<>();  
+students.add(new Student("张三", 18));  
+students.add(new Student("李四", 20));  
+students.add(new Student("王五", 19));  
+students.add(new Student("赵六", 23));  
+students.add(new Student("孙七", 15));  
+students.add(new Student("张三", 18));  
 students.stream()  
         .filter(s -> s.getAge() >= 18)  
         .filter(s -> s.getAge() <= 20)  
         .sorted((o1, o2) -> o2.getAge() - o1.getAge())  
         // 去重  
         .distinct() // 对非基本类型的去重需要重写equals和hashCode方法  
-        .forEach(System.out::println);
+        .forEach(System.out::println);  
+System.out.println("--------------------");  
+// 取指定个数  
+list1.stream().filter(s -> s >= 6.0).sorted(((o1, o2) -> Double.compare(o2, o1))).limit(2).forEach(System.out::println);  
+System.out.println("--------------------");  
+// 跳过指定个数  
+list1.stream().filter(s -> s >= 6.0).sorted(((o1, o2) -> Double.compare(o2, o1))).skip(1).forEach(System.out::println);  
+System.out.println("--------------------");
 ```
 - **map（转换）**
 	`map()` 方法可将一个流的元素转换为另一个流。它接受一个函数，该函数映射流中的每个元素转到另一个元素。
