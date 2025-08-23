@@ -76,14 +76,14 @@ students.stream()
         .filter(s -> s.getAge() >= 18)  
         .filter(s -> s.getAge() <= 20)  
         .sorted((o1, o2) -> o2.getAge() - o1.getAge())  
-        // 去重  
+        // distinct() 去重  
         .distinct() // 对非基本类型的去重需要重写equals和hashCode方法  
         .forEach(System.out::println);  
 System.out.println("--------------------");  
-// 取指定个数  
+// limit() 取指定个数  
 list1.stream().filter(s -> s >= 6.0).sorted(((o1, o2) -> Double.compare(o2, o1))).limit(2).forEach(System.out::println);  
 System.out.println("--------------------");  
-// 跳过指定个数  
+// skip() 跳过指定个数  
 list1.stream().filter(s -> s >= 6.0).sorted(((o1, o2) -> Double.compare(o2, o1))).skip(1).forEach(System.out::println);  
 System.out.println("--------------------");
 ```
