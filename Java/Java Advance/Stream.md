@@ -134,7 +134,14 @@ System.out.println("--------------------");
 List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");
 names.stream().forEach(System.out::println);
 ```
-- **collect**
+- **count（计数）**
+	count()方法可以返回流中的元素数。
+```java
+List<String> names = Arrays.asList("Alex", "Brian", "Charles", "David");
+long count = names.stream().count();
+System.out.println(count);
+```
+- **collect（收集）**
 	`collect()` 方法可以将流中的元素收集到一个集合中。
 ```java
 List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
@@ -142,8 +149,6 @@ List<Integer> evenNumbers = numbers.stream()
 	.filter(n -> n % 2 == 0).collect(Collectors.toList());
 System.out.println(evenNumbers);
 ```
-- **count（计数）**
-	count()方法可以返回流中的元素数。
 ## 案例
 ![[StreamCase1.png]]
 ```java
