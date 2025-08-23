@@ -52,6 +52,8 @@ stream3.forEach(System.out::println);
 	`skip()` 方法可跳过前N个元素。
 - **distinct（去重）**
 	返回一个元素各异（根据流所生成元素的hashCode和equals方法实现）的流。
+- **map（转换）**
+	`map()` 方法可将一个流的元素转换为另一个流。它接受一个函数，该函数映射流中的每个元素转到另一个元素。
 - **sorted（排序）**
 	1. sorted()->自然排序（从小到大），流中元素需实现Comparable接口。 
 	2. sorted(Comparator com)->定制排序。常用以下几种：
@@ -86,25 +88,41 @@ System.out.println("--------------------");
 // skip() 跳过指定个数  
 list1.stream().filter(s -> s >= 6.0).sorted(((o1, o2) -> Double.compare(o2, o1))).skip(1).forEach(System.out::println);  
 System.out.println("--------------------");
-```
-- **map（转换）**
-	`map()` 方法可将一个流的元素转换为另一个流。它接受一个函数，该函数映射流中的每个元素转到另一个元素。
-```java
-List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);  
-List<Integer> collect = numbers.stream()  
-        .map(n -> {  
-            n = n * 2;  
-            return n;  
-        }).collect(Collectors.toList());  
-for (Integer integer : collect) {  
-    System.out.println("integer = " + integer);  
-}  
-// 输出  
-// integer = 2  
-// integer = 4  
-// integer = 6  
-// integer = 8  
-// integer = 10
+// map() 把一个流转换成另一个类型的流  
+students.stream().map(Student::getName).forEach(System.out::println);
+
+// 多个流合并成一个流  
+List<String> list2 = new ArrayList<>(List.of("张三丰", "张无忌"));  
+List<String> list3 = new ArrayList<>(List.of("王五", "李四", "张三"));  
+Stream.concat(list2.stream(), list3.stream()).forEach(System.out::println);  
+System.out.println("--------------------");
+//输出：
+//6.6
+//7.0
+//9.8
+//--------------------
+//Student{name='李四', age=20}
+//Student{name='王五', age=19}
+//Student{name='张三', age=18}
+//--------------------
+//9.8
+//7.0
+//--------------------
+//7.0
+//6.6
+//--------------------
+//张三丰
+//张无忌
+//王五
+//李四
+//张三
+//--------------------
+//张三
+//李四
+//王五
+//赵六
+//孙七
+//张三
 ```
 
 ### 终止操作
