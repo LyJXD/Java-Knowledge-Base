@@ -60,13 +60,10 @@ stream3.forEach(System.out::println);
 		`list.stream().sorted(Comparator.reverseOrder())` 倒序排序
 		`list.stream().sorted(Comparator.comparing(Student::getAge))` 顺序排序
 		`list.stream().sorted(Comparator.comparing(Student::getAge).reversed())` 倒序排序
+- **concat（合并）**
+	`concat()` 方法用于合并两个流，这两个流的数据类型尽可能的保持一致，如果数据类型不一致，那么最终的数据类型就是这两个流共同的父类类型，相当于进行了类型提升，导致无法使用子类里特有的功能。
 ```java
-// 对元素进行升序排序  
-List<Double> list1 = new ArrayList<>(List.of(9.8, 4.5, 6.6, 3.1, 7.0));  
-list1.stream().filter(s -> s >= 6.0).sorted().forEach(System.out::println);  
-System.out.println("--------------------");  
-  
-// 按照指定规则进行排序  
+// sorted() 按照指定规则进行排序  
 List<Student> students = new ArrayList<>();  
 students.add(new Student("张三", 18));  
 students.add(new Student("李四", 20));  
@@ -91,16 +88,16 @@ System.out.println("--------------------");
 // map() 把一个流转换成另一个类型的流  
 students.stream().map(Student::getName).forEach(System.out::println);
 
-// 多个流合并成一个流  
+// sorted() 对元素进行升序排序(自然排序) 
+List<Double> list1 = new ArrayList<>(List.of(9.8, 4.5, 6.6, 3.1, 7.0));  
+list1.stream().filter(s -> s >= 6.0).sorted().forEach(System.out::println);  
+System.out.println("--------------------");  
+// concat() 多个流合并成一个流  
 List<String> list2 = new ArrayList<>(List.of("张三丰", "张无忌"));  
 List<String> list3 = new ArrayList<>(List.of("王五", "李四", "张三"));  
 Stream.concat(list2.stream(), list3.stream()).forEach(System.out::println);  
 System.out.println("--------------------");
 //输出：
-//6.6
-//7.0
-//9.8
-//--------------------
 //Student{name='李四', age=20}
 //Student{name='王五', age=19}
 //Student{name='张三', age=18}
@@ -111,17 +108,21 @@ System.out.println("--------------------");
 //7.0
 //6.6
 //--------------------
-//张三丰
-//张无忌
-//王五
-//李四
-//张三
-//--------------------
 //张三
 //李四
 //王五
 //赵六
 //孙七
+//张三
+//--------------------
+//6.6
+//7.0
+//9.8
+//--------------------
+//张三丰
+//张无忌
+//王五
+//李四
 //张三
 ```
 
@@ -141,6 +142,8 @@ List<Integer> evenNumbers = numbers.stream()
 	.filter(n -> n % 2 == 0).collect(Collectors.toList());
 System.out.println(evenNumbers);
 ```
+- **count（计数）**
+	count()方法可以返回流中的元素数。
 ## 案例
 ![[StreamCase1.png]]
 ```java
