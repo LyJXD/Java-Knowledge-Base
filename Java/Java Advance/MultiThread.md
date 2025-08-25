@@ -61,29 +61,29 @@ public class Test implements Runnable{
 	无论实现Runnable接口，还是继承Thread类，都存在一些缺陷，我们无法获得线程的执行结果，无法处理执行过程的异常。  
 	Callable是JDK 1.5新增的接口，Callable接口里面定义了 `call()` 方法，`call()` 方法是 `run()` 方法的增强版，可以通过实现Callable接口时传入泛型来指定 `call()` 方法的返回值，并且可以声明抛出异常。  
 	- **实现步骤**  
-		1. 创建一个实现Callable的实现类
-		2. 实现call方法,将操作声明在 `call()` 方法中
-		3. 创建Callable实现类的对象
-		4. 将此实现类的对象作为参数,传递到FutureTask构造器,创建FutureTask对象
-		5. 将FutureTask的对象作为参数传递到Thread类的构造器中,创建Thread对象
+		1. 创建一个实现Callable的实现类。
+		2. 实现call方法,将操作声明在 `call()` 方法中。
+		3. 创建Callable实现类的对象。
+		4. 将此实现类的对象作为参数传递到FutureTask构造器，创建FutureTask对象。
+		5. 将FutureTask的对象作为参数传递到Thread类的构造器中，创建Thread对象。
 ```java
 public class Test implements Callable<String> {
     @Override
     public String call() throws Exception {
         System.out.println("Thread is Created");
         return "OK";
-    }
-    
+    }0.
     public static void main(String[] args) throws Exception {
         Test test = new Test();
         FutureTask futureTask = new FutureTask(test);
         Thread thread = new Thread(futureTask);
         thread.start();
+        // 调用FutureTask对象的 get() 方法来获得子线程执行结束后的返回值。
         String str = (String) futureTask.get(5,TimeUnit.SECONDS);
         System.out.println(str);
         System.out.println(Thread.currentThread().getName());
     }
-}
+} 
 ```
 ### 常用方法
 - **`currentThread()`**  
