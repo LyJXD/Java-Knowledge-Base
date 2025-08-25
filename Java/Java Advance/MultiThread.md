@@ -95,7 +95,7 @@ public class Test implements Callable<String> {
 - **`yield()`**  
 	释放当前cpu的执行权。
 - **`join()`**  
-	在线程a中调用线程b的 `join()` ，则线程a进入阻塞状态，等线程b结束后结束阻塞状态。
+	在线程a中调用线程b的 `join()`，则线程a进入阻塞状态，等线程b结束后结束阻塞状态。
 - **`sleep（Long militime）`**  
 	让当前线程阻断指定的militime毫秒，此时为阻塞状态。
 - **`isAlive()`**  
