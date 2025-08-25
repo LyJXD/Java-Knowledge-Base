@@ -25,9 +25,9 @@
 - **死亡状态（Dead）**  
 	线程执行完了或者因异常退出了 `run()` 方法，该线程结束生命周期。
 
-## 创建线程
-### 继承Thread类
-- **示例**
+## 使用线程
+### 创建线程
+- **继承Thread类**
 ```java
 public class Test extends Thread{
     @Override
@@ -42,8 +42,7 @@ public class Test extends Thread{
     }
 }
 ```
-### 实现Runnable接口
-- **示例**
+- **实现Runnable接口**
 ```java
 public class Test implements Runnable{
     @Override
@@ -58,14 +57,13 @@ public class Test implements Runnable{
     }
 }
 ```
-### 实现Callable接口
-无论实现Runnable接口，还是继承Thread类，都存在一些缺陷，我们无法获得线程的执行结果，无法处理执行过程的异常。
-Callable是JDK 1.5新增的接口，Callable接口里面定义了 `call()` 方法，`call()` 方法是 `run()` 方法的增强版，可以通过实现Callable接口时传入泛型来指定 `call()` 方法的返回值，并且可以声明抛出异常。
-- **实现步骤**
-	1. 创建线程类实现Callable接口，重写 `call()` 方法。
-	2. 创建FutureTask实例，将实现Callable接口的线程类实例化对象作为FutureTask的target。
-	3. 创建Thread类，将FutureTask实例化对象作为Thread的target。
-- **示例**
+- **实现Callable接口**  
+	无论实现Runnable接口，还是继承Thread类，都存在一些缺陷，我们无法获得线程的执行结果，无法处理执行过程的异常。  
+	Callable是JDK 1.5新增的接口，Callable接口里面定义了 `call()` 方法，`call()` 方法是 `run()` 方法的增强版，可以通过实现Callable接口时传入泛型来指定 `call()` 方法的返回值，并且可以声明抛出异常。  
+	- **实现步骤**  
+		1. 创建线程类实现Callable接口，重写 `call()` 方法。
+		2. 创建FutureTask实例，将实现Callable接口的线程类实例化对象作为FutureTask的target。
+		3. 创建Thread类，将FutureTask实例化对象作为Thread的target。
 ```java
 public class Test implements Callable<String> {
     @Override
@@ -86,6 +84,19 @@ public class Test implements Callable<String> {
 }
 ```
 ### 常用方法
-
+- **currentThread()**  
+	静态方法，返回当前代码的线程。
+- **getName()**  
+	获得当先线程的名字。
+- **setName()**  
+	设置当前线程的名字。
+- **yield()**  
+	释放当前cpu的执行权。
+- **join()**  
+	在线程a中调用线程b的join()，则线程a进入阻塞状态，等线程b结束后结束阻塞状态。
+- **sleep（Long militime）**  
+	让当前线程阻断指定的militime毫秒，此时为阻塞状态。
+- **isAlive()**  
+	判断线程是否存活。
 
 ## 线程池
