@@ -61,9 +61,11 @@ public class Test implements Runnable{
 	无论实现Runnable接口，还是继承Thread类，都存在一些缺陷，我们无法获得线程的执行结果，无法处理执行过程的异常。  
 	Callable是JDK 1.5新增的接口，Callable接口里面定义了 `call()` 方法，`call()` 方法是 `run()` 方法的增强版，可以通过实现Callable接口时传入泛型来指定 `call()` 方法的返回值，并且可以声明抛出异常。  
 	- **实现步骤**  
-		1. 创建线程类实现Callable接口，重写 `call()` 方法。
-		2. 创建FutureTask实例，将实现Callable接口的线程类实例化对象作为FutureTask的target。
-		3. 创建Thread类，将FutureTask实例化对象作为Thread的target。
+		1. 创建一个实现Callable的实现类
+		2. 实现call方法,将操作声明在 `call()` 方法中
+		3. 创建Callable实现类的对象
+		4. 将此实现类的对象作为参数,传递到FutureTask构造器,创建FutureTask对象
+		5. 将FutureTask的对象作为参数传递到Thread类的构造器中,创建Thread对象
 ```java
 public class Test implements Callable<String> {
     @Override
@@ -84,19 +86,58 @@ public class Test implements Callable<String> {
 }
 ```
 ### 常用方法
-- **currentThread()**  
+- **`currentThread()`**  
 	静态方法，返回当前代码的线程。
-- **getName()**  
+- **`getName()`**  
 	获得当先线程的名字。
-- **setName()**  
+- **`setName()`**  
 	设置当前线程的名字。
-- **yield()**  
+- **`yield()`**  
 	释放当前cpu的执行权。
-- **join()**  
-	在线程a中调用线程b的join()，则线程a进入阻塞状态，等线程b结束后结束阻塞状态。
-- **sleep（Long militime）**  
+- **`join()`**  
+	在线程a中调用线程b的 `join()` ，则线程a进入阻塞状态，等线程b结束后结束阻塞状态。
+- **`sleep（Long militime）`**  
 	让当前线程阻断指定的militime毫秒，此时为阻塞状态。
-- **isAlive()**  
+- **`isAlive()`**  
 	判断线程是否存活。
+```java
+class mythresd extends Thread{
+    @Override
+    public void run() {
+        for(int i = 0;i<=100;i++){
+            try {
+                    sleep(100); //阻断100毫秒
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            if(i%2==0){
+                System.out.println(Thread.currentThread().getName()+" "+i); //输出线程名
+            }
+        }
+    }
+}
+
+public class Test {
+    public static void main(String[] args) {
+        mythresd mythresd = new mythresd();
+        mythresd.setName("线程一"); //设置线程名
+        mythresd.start();
+        
+        Thread.currentThread().setName("主线程");
+        for(int i = 0;i<=100;i++){
+            if(i%2==0){   
+                if(i==20){
+                    mythresd.join(); //阻断主线程
+                } 
+                System.out.println(Thread.currentThread().getName()+" "+i);
+            }
+        }
+        //判断mythread线程是否还存活
+        System.out.println(mythresd.isAlive());
+    }
+}
+```
+
+## 线程安全
 
 ## 线程池

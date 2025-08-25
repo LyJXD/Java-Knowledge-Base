@@ -117,33 +117,33 @@ public class Wildcards {
         ArrayList<Car> carList = new ArrayList<Car>();  
         ArrayList<BENZ> benzList = new ArrayList<BENZ>();  
         ArrayList<BMW> bmwList = new ArrayList<BMW>();  
-  
+        
         test(machineList);  
         test(carList);  
         test(benzList);  
         test(bmwList);  
-  
+        
         test1(machineList); // ❌ 报错  
         test1(carList);  
         test1(benzList);  
         test1(bmwList);  
-  
+        
         test2(machineList);  
         test2(carList);  
         test2(benzList);    // ❌ 报错  
         test2(bmwList);     // ❌ 报错  
     }  
-  
+    
     public static void test(ArrayList<?> list)  
     {  
         System.out.println("无界通配符");  
     }  
-  
+    
     public static void test1(ArrayList<? extends Car> list)  
     {  
         System.out.println("上界通配符");  
     }  
-  
+    
     public static void test2(ArrayList<? super Car> list)  
     {  
         System.out.println("下界通配符");  
