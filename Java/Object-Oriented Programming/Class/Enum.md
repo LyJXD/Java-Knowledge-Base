@@ -15,9 +15,9 @@ enum EnumName {
 - **示例**
 ```java
 public enum TestEnum {
-    RED("RED", 1),
-    GREEN("GREEN", 2),
-    BLACK("BLACK", 3);
+    RED("RED", 0),
+    GREEN("GREEN", 1),
+    BLACK("BLACK", 2);
     
     private String color;
     private int ori;
@@ -28,10 +28,10 @@ public enum TestEnum {
         this.ori = ori;
     }
     
-    // 主方法
     public static void main(String[] args) {
         TestEnum[] values = TestEnum.values();
         for (TestEnum value : values) {
+	        // ordinal()方法可以找到每个枚举常量的索引，就像数组索引一样。
             System.out.println(value + " ori: " + value.ordinal());
         }
         System.out.println("======================");
