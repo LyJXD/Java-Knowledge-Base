@@ -1,6 +1,6 @@
 ## 注解
 Java注解又称Java标注，是JDK5.0引入的一种注释机制。
-Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。Java虚拟机可以保留标注内容，在运行时可以获取到标注内容 。
+Java语言中的类、方法、变量、参数和包等都可以被标注。和Javadoc不同，Java标注可以通过反射获取标注内容。在编译器生成类文件时，标注可以被嵌入到字节码中。[[JVM]]可以保留标注内容，在运行时可以获取到标注内容。
 
 ## 内置注解
 ### 作用在代码的注解
@@ -13,9 +13,9 @@ Java语言中的类、方法、变量、参数和包等都可以被标注。和J
 ### 元注解（作用在其他注解的注解）
 - **`@Retention`**  
 	标识这个注解怎么保存。
-	- `RetentionPolicy.SOURCE` 注解只存在于源代码中，编译后会被丢弃。
-	- `RetentionPolicy.CLASS` 字节码阶段有效。
-	- `RetentionPolicy.RUNTIME` 运行阶段有效。
+	- `RetentionPolicy.SOURCE` 只存在于源代码中，编译后会被丢弃。
+	- `RetentionPolicy.CLASS` 在编译时被保留到 `.class` 文件中，但不会加载到JVM中。
+	- `RetentionPolicy.RUNTIME` 会被保留到 `.class` 文件中，并在运行时通过反射读取。
 	若没有 `@Retention`，则默认是 `RetentionPolicy.CLASS`。
 - **`@Documented`**  
 	标记这些注解是否包含在用户文档中。
