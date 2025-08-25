@@ -40,7 +40,19 @@ Java语言中的类、方法、变量、参数和包等都可以被标注。和J
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.FIELD,ElementType.METHOD})
 public @interface MyAnnotation { 
-    int id();
+	
+	int id();
+	
+    // 给注解直接设置一个默认值，使用时可以省略
+	String name() default "默认名称";
+	
+	// 特殊的属性  
+	// 无参数属性可命名为value，value使用时可省略属性名  
+	String value();
+	
     String describe();
 }
+
+@MyAnnotation(id = 1, flag = true, strings = {"java","annotation"})  
+public class Test {}
 ```
