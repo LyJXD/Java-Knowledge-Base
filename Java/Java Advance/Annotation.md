@@ -38,21 +38,30 @@ Java语言中的类、方法、变量、参数和包等都可以被标注。和J
 - **示例**
 ```java
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD,ElementType.METHOD})
-public @interface MyAnnotation { 
-	
+@Target(ElementType.TYPE)
+public @interface MyAnnotation01 { 
 	int id();
 	
-    // 给注解直接设置一个默认值，使用时可以省略
+    // 给注解直接设置一个默认值，赋值时可以省略
 	String name() default "默认名称";
-	
-	// 特殊的属性  
-	// 无参数属性可命名为value，value使用时可省略属性名  
-	String value();
 	
     String describe();
 }
 
-@MyAnnotation(id = 1, flag = true, strings = {"java","annotation"})  
-public class Test {}
+@Retention(value= RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD, ElementType.METHOD})
+public @interface MyAnnotation02 {  
+    // 自定义注解只有一个属性时，且属性名为value时，赋值时value可省略。  
+    String value();  
+}
+
+@MyAnnotation01(id = 1, strings = {"java","annotation"})  
+public class Test {  
+    @MyAnnotation02("注解")  
+    private String name;  
+    
+    @MyAnnotation02(value = "注解")  
+    public void test() {
+    }
+}
 ```
