@@ -30,7 +30,17 @@ Java语言中的类、方法、变量、参数和包等都可以被标注。和J
 	标记这个注解是继承于哪个注解类（默认->注解并没有继承于任何子类）。
 
 ## 自定义注解
-- **语法**
+### 步骤
+1. 使用 `@interface` 来定义你的注解。
+2. 使用 `@Retention` 注解来声明自定义注解的生命周期。
+3. 使用 `@Target` 注解来声明注解的使用范围。
+4. 添加注解的属性。
+- **示例**
 ```java
-
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ElementType.FIELD,ElementType.METHOD})
+public @interface MyAnnotation { 
+    int id();
+    String describe();
+}
 ```
