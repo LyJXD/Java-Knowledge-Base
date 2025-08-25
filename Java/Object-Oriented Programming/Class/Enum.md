@@ -27,7 +27,15 @@ public enum TestEnum {
         this.color = color;
         this.ori = ori;
     }
-    
+	
+	public String getColor() {  
+	    return color;  
+	}
+	
+	public int getOri() {  
+	    return ori;  
+	}  
+	
     public static void main(String[] args) {
         TestEnum[] values = TestEnum.values();
         for (TestEnum value : values) {
