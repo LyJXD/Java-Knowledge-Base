@@ -35,7 +35,7 @@ public void myMethod throws Exceptionl, Exception2, …, ExceptionN
 声明异常的关楗字是 `throws` ，抛出异常的关键字是 `throw` 。
 - **示例**
 ```java
-// 发现传递给方法的参数与方法的合约不符,创建 IllegalArgumentException 的一个实例并抛出它
+// 发现传递给方法的参数与方法的合约不符，创建 IllegalArgumentException 的一个实例并抛出它
 throw new IllegalArgumentException("Wrong Argument");
 ```
 ### 捕获异常
