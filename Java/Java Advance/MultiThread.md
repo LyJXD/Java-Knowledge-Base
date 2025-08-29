@@ -128,30 +128,22 @@ public class Test implements Callable<String> {
 - **`join()`**  
 	`join()` 同样是Thread类中的一个方法，调用 `join()` 的线程拥有**优先使用CPU时间片的权利**，其他线程需要等待 `join()` 调用的线程执行结束后才能继续执行。探索其底层会发现，它的底层是通过 `wait()` 进行实现，因此它也需要处理异常。
 - **`yield()`**
-	`yield()` 是Thread类中的一个静态方法，它的调用不需要传入时间参数，并且 `yield()` 方法只会给相同优先级或更高优先级的线程运行的机会，并且调用 `yield()` 的线程状态会转为就绪状态，调用 `yield()` 方法只是一个建议，告诉线程调度器我的工作已经做的差不多了，可以让别的线程使用CPU了，没有任何机制保证采纳。所以可能它刚让出CPU时间片，又被线程调度器分配了一个时间片继续执行了。使用时不需要处理异常。
-- **常见问题**
-	- sleep()与wait()的区别？
-	1. sleep() 是 Thread 类的静态本地方法；wait() 是Object类的成员本地方法；
-	2. JDK1.8 sleep() wait() 均需要捕获 InterruptedException 异常；
-	3. sleep() 方法可以在任何地方使用；wait() 方法则只能在同步方法或同步代码块中使用；
-	4. sleep() 会休眠当前线程指定时间，释放 CPU 资源，不释放对象锁，休眠时间到自动苏醒继续执行；wait() 方法放弃持有的对象锁，进入等待队列，当该对象被调用 notify() / notifyAll() 方法后才有机会竞争获取对象锁，进入运行状态。
-
-  
-
-**（2）sleep()与yield()的区别？**
-
-1. sleep() 方法给其他线程运行机会时不考虑线程的优先级；yield() 方法只会给相同优先级或更高优先级的线程运行的机会；
-2. sleep() 方法声明抛出 InterruptedException；yield() 方法没有声明抛出异常；
-3. 线程执行 sleep() 方法后进入超时等待状态；线程执行 yield() 方法转入就绪状态，可能马上又得得到执行；
-4. sleep() 方法需要指定时间参数；yield() 方法出让 CPU 的执行权时间由 JVM 控制。
-
-  
-
-**（3）sleep()与join()的区别？**
-
-1. JDK1.8 sleep() join() 均需要捕获 InterruptedException 异常；
-2. sleep()是Thread的静态本地方法，join()是Thread的普通方法；
-3. sleep()不会释放锁资源，join()底层是wait方法，会释放锁。
+	`yield()` 是Thread类中的一个静态方法，它的调用不需要传入时间参数，并且 `yield()` 方法只会**给相同优先级或更高优先级的线程运行的机会**，并且调用 `yield()` 的线程状态会转为就绪状态，调用 `yield()` 方法只是一个建议，告诉线程调度器我的工作已经做的差不多了，可以让别的线程使用CPU了，没有任何机制保证采纳。所以可能它刚让出CPU时间片，又被线程调度器分配了一个时间片继续执行了。使用时不需要处理异常。
+- **方法对比**
+	- **`sleep()` 对比 `wait()`**
+		1. `sleep()` 是Thread类的静态本地方法；`wait()` 是Object类的成员本地方法。
+		2. JDK1.8 后`sleep()`  `wait()` 均需要捕获 `InterruptedException` 异常。
+		3. `sleep()` 方法可以在任何地方使用；wait() 方法则只能在同步方法或同步代码块中使用。
+		4. sleep() 会休眠当前线程指定时间，释放 CPU 资源，不释放对象锁，休眠时间到自动苏醒继续执行；wait() 方法放弃持有的对象锁，进入等待队列，当该对象被调用 notify() / notifyAll() 方法后才有机会竞争获取对象锁，进入运行状态。
+	- **`sleep()` 对比 `yield()`**
+		1. sleep() 方法给其他线程运行机会时不考虑线程的优先级；yield() 方法只会给相同优先级或更高优先级的线程运行的机会。
+		2. sleep() 方法声明抛出 InterruptedException；yield() 方法没有声明抛出异常。
+		3. 线程执行 sleep() 方法后进入超时等待状态；线程执行 yield() 方法转入就绪状态，可能马上又得得到执行。
+		4. sleep() 方法需要指定时间参数；yield() 方法出让 CPU 的执行权时间由 JVM 控制。
+	- **`sleep()` 对比 `join()`**
+		1. JDK1.8 sleep() join() 均需要捕获 InterruptedException 异常。
+		2. sleep()是Thread的静态本地方法，join()是Thread的普通方法。
+		3. sleep()不会释放锁资源，join()底层是wait方法，会释放锁。
 - **常用方法示例**
 ```java
 class mythresd extends Thread{
