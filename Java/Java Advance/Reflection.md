@@ -12,12 +12,11 @@
 - **运行时类型信息**  
 	反射允许程序在运行时，查询对象的类型信息，这对于编写通用的代码和库非常有用。
 ### 反射的工作流程
-1. **获取 `Class` 对象** 
-首先获取目标类的 `Class` 对象。
-2. **获取成员信息**：通过 `Class` 对象，可以获取类的字段、方法、构造函数等信息。
-3. **操作成员**：通过反射 API 可以读取和修改字段的值、调用方法以及创建对象。
+1. **获取 `Class` 对象** 首先获取目标类的 `Class` 对象。
+2. **获取成员信息** 通过 `Class` 对象，可以获取类的字段、方法、构造函数等信息。
+3. **操作成员** 通过反射API可以读取和修改字段的值、调用方法以及创建对象。
 ### 反射的使用
-- **获取 Class 对象**
+- **获取 `Class` 对象**
 ```java
 // 通过类字面量
 Class<?> clazz = String.class;
@@ -29,24 +28,23 @@ Class<?> clazz = str.getClass();
 // 通过 Class.forName() 方法
 Class<?> clazz = Class.forName("java.lang.String");
 ```
-### 2. 创建对象
-可以使用反射动态创建对象：
-```
+- **创建对象**
+```java
 Class<?> clazz = Class.forName("java.lang.String");
+// getDeclared...() 可以访问包括public、protected、default和private修饰的对方法应成员
+// 适用于需要访问类中私有成员或受保护成员的场景
 Object obj = clazz.getDeclaredConstructor().newInstance();
 ```
-### 3. 访问字段
-可以通过反射访问和修改类的字段：
-```
+- **访问字段**
+```java
 Class<?> clazz = Person.class;
 Field field = clazz.getDeclaredField("name");
 field.setAccessible(true); // 如果字段是私有的，需要设置为可访问
 Object value = field.get(personInstance); // 获取字段值
 field.set(personInstance, "New Name"); // 设置字段值
 ```
-### 4. 调用方法
-可以通过反射调用类的方法：
-```
+- **调用方法**
+```java
 Class<?> clazz = Person.class;
 Method method = clazz.getMethod("sayHello");
 method.invoke(personInstance);
@@ -54,16 +52,14 @@ method.invoke(personInstance);
 Method methodWithArgs = clazz.getMethod("greet", String.class);
 methodWithArgs.invoke(personInstance, "World");
 ```
-### 5. 获取构造函数
-可以使用反射获取和调用构造函数：
-```
+- **获取构造函数**
+```java
 Class<?> clazz = Person.class;
 Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
 Object obj = constructor.newInstance("John", 30);
 ```
-### 6. 获取接口和父类
-可以使用反射获取类实现的接口和父类：
-```
+- **获取接口和父类**
+```java
 Class<?> clazz = Person.class;
 
 // 获取所有接口
