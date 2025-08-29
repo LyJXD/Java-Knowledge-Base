@@ -94,7 +94,7 @@ public class Test implements Runnable{
 ```
 - **实现Callable接口**  
 	无论实现Runnable接口，还是继承Thread类，都存在一些缺陷，我们无法获得线程的执行结果，无法处理执行过程的异常。  
-	Callable是JDK 1.5新增的接口，Callable接口里面定义了 `call()` 方法，`call()` 方法是 `run()` 方法的增强版，可以通过实现Callable接口时传入泛型来指定 `call()` 方法的返回值，并且可以声明抛出异常。  
+	Callable是 JDK 1.5 新增的接口，Callable接口里面定义了 `call()` 方法，`call()` 方法是 `run()` 方法的增强版，可以通过实现Callable接口时传入泛型来指定 `call()` 方法的返回值，并且可以声明抛出异常。  
 	- **实现步骤**  
 		1. 创建一个实现Callable的实现类。
 		2. 实现call方法,将操作声明在 `call()` 方法中。
