@@ -12,7 +12,7 @@
 - **运行时类型信息**  
 	反射允许程序在运行时，查询对象的类型信息，这对于编写通用的代码和库非常有用。
 ### 反射的工作流程
-1. **获取 `Class` 对象** 首先获取目标类的 `Class` 对象。
+1. **获取 `Class` 对象** 首先获取目标类的 `Class` 字节码对象。
 2. **获取成员信息** 通过 `Class` 对象，可以获取类的字段、方法、构造函数等信息。
 3. **操作成员** 通过反射API可以读取和修改字段的值、调用方法以及创建对象。
 ### 反射的使用
@@ -27,6 +27,12 @@ Class<?> clazz = str.getClass();
 
 // 通过 Class.forName() 方法
 Class<?> clazz = Class.forName("java.lang.String");
+```
+- **获取构造函数**
+```java
+Class<?> clazz = Person.class;
+Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
+Object obj = constructor.newInstance("John", 30);
 ```
 - **创建对象**
 ```java
@@ -51,12 +57,6 @@ method.invoke(personInstance);
 
 Method methodWithArgs = clazz.getMethod("greet", String.class);
 methodWithArgs.invoke(personInstance, "World");
-```
-- **获取构造函数**
-```java
-Class<?> clazz = Person.class;
-Constructor<?> constructor = clazz.getConstructor(String.class, int.class);
-Object obj = constructor.newInstance("John", 30);
 ```
 - **获取接口和父类**
 ```java
