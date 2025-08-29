@@ -121,6 +121,8 @@ public class Test implements Callable<String> {
 } 
 ```
 ### 常用方法
+- **`sleep()`**
+	`sleep()` 是Thread类中的一个静态本地方法，通过设置方法中的时间参数，使调用它的线程休眠指定时间，线程从RUNNING状态转为BLOCKED状态，这个过程中会**释放CPU资源**，给其他线程运行机会时不考虑线程的优先级，但如果**有同步锁则 `sleep()` 不会释放锁**即其他线程无法获得同步锁，需要注意的是 `sleep()` 使用时要处理异常。休眠时间未到时，可通过调用 `interrupt()` 方法来唤醒休眠线程。
 - **基础方法示例**
 ```java
 class mythresd extends Thread{
@@ -159,7 +161,6 @@ public class Test {
     }
 }
 ```
-
 
 ## 线程安全
 线程安全并不是一个“非黑即白”单项选择题。按照“线程安全”的安全程度由强到弱来排序，我们可以将java语言中各种操作共享的数据分为以下5类：
