@@ -43,7 +43,7 @@ throw new IllegalArgumentException("Wrong Argument");
 - **`try catch finally`**
 	1. **try语句块中**放的是可能出现问题的代码。
 	2. **catch语句块中**放的是出现问题并捕获后，处理问题的代码code，如果问题在try语句块中没有出现 则catch中不会运行。
-	3. **finally语句块中**放的是不管问题异常是否产生 都要执行的代码code。
+	3. **finally语句块中**放的是不管问题异常是否产生，甚至try语句块中执行 `return` 都要执行的代码code。
 - **语法**
 ```java
 try {

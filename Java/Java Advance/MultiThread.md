@@ -121,20 +121,7 @@ public class Test implements Callable<String> {
 } 
 ```
 ### 常用方法
-- **`currentThread()`**  
-	静态方法，返回当前代码的线程。
-- **`getName()`**  
-	获得当先线程的名字。
-- **`setName()`**  
-	设置当前线程的名字。
-- **`yield()`**  
-	释放当前cpu的执行权。
-- **`join()`**  
-	在线程a中调用线程b的 `join()`，则线程a进入阻塞状态，等线程b结束后结束阻塞状态。
-- **`sleep（Long militime）`**  
-	让当前线程阻断指定的militime毫秒，此时为阻塞状态。
-- **`isAlive()`**  
-	判断线程是否存活。
+- **基础方法示例**
 ```java
 class mythresd extends Thread{
     @Override
@@ -173,6 +160,7 @@ public class Test {
 }
 ```
 
+
 ## 线程安全
 线程安全并不是一个“非黑即白”单项选择题。按照“线程安全”的安全程度由强到弱来排序，我们可以将java语言中各种操作共享的数据分为以下5类：
 **不可变**
@@ -199,6 +187,7 @@ public class Test {
 - **性能问题**  
 	不合理的同步策略可能导致程序的性能下降。
 ### synchronized
+`synchronized` 是一种内置的 Java 关键字，它用于实现线程的同步。当一个线程进入`synchronized`块或方法时，它获得了锁，这会阻止其他线程同时进入相同的`synchronized`块或方法，从而确保了共享资源的互斥访问。
 - **同步代码块**
 ### lock
 
