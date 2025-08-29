@@ -146,18 +146,19 @@ public class Test implements Callable<String> {
 		4. `sleep()` 需要指定时间参数；`yield()` 让出CPU的执行权时间由[[JVM]]控制。
 - **常用方法示例**
 ```java
-class mythresd extends Thread{
+class mythresd extends Thread {
     @Override
     public void run() {
-        for(int i = 0;i<=100;i++){
+        for(int i = 0; i <= 100 ;i++) {
             try {
                     sleep(100); // 休眠100毫秒
                 } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                 }
             if(i%2==0){
-                System.out.println(Thread.currentThread().getName()+" "+i); // 输出线程名
-            }
+	            // 输出线程名
+                System.out.println(Thread.currentThread().getName() + " " + i); 
+            } 
         }
     }
 }
@@ -169,12 +170,12 @@ public class Test {
         mythresd.start(); // 启动线程
         
         Thread.currentThread().setName("主线程");
-        for(int i = 0;i<=100;i++){
-            if(i%2==0){   
-                if(i==20){
+        for (int i = 0; i <= 100; i++) {
+            if (i%2==0) { 
+                if (i==20) {
                     mythresd.join(); // 阻断主线程
                 } 
-                System.out.println(Thread.currentThread().getName()+" "+i);
+                System.out.println(Thread.currentThread().getName() + " " + i);
             }
         }
         // 判断mythread线程是否还存活
@@ -222,10 +223,14 @@ public class Test {
 	4. 线程在释放了对象的监视器锁后，其他线程可以尝试获取监视器锁。
 - **JDK底层的优化**
 	synchronized在JDK1.6之后进行了优化，引入了偏向锁，轻量级锁，自旋锁等概念，用来提高性能和减少阻塞开销。以下是一些常见的优化详细说明：
-	1. 偏向锁：JDK引入了偏向锁，它会将锁定的对象与线程相关联，当一个线程获得锁时，它会标记对象为已偏向该线程，以后再次进入同步块时，不需要竞争锁，而是直接获得。这对于减少无竞争情况下的锁开销非常有用。
-	2. 轻量级锁：在低竞争情况下，JDK使用轻量级锁来减小锁开销。轻量级锁采用自旋方式来等待锁的释放，而不是进入阻塞状态。
-	3. 自旋锁：当轻量级锁尝试获取锁失败时，JDK可以选择使用自旋锁。自旋锁不会使线程进入阻塞状态，而是一直尝试获取锁，通常在短时间内完成。这对于低竞争锁非常有用。
-	4. 适应性自旋：JDK中的锁可以根据历史性能数据来调整自旋等待的次数，以达到更好的性能。
+	1. **偏向锁**  
+		JDK引入了偏向锁，它会将锁定的对象与线程相关联，当一个线程获得锁时，它会标记对象为已偏向该线程，以后再次进入同步块时，不需要竞争锁，而是直接获得。这对于减少无竞争情况下的锁开销非常有用。
+	2. **轻量级锁**  
+		在低竞争情况下，JDK使用轻量级锁来减小锁开销。轻量级锁采用自旋方式来等待锁的释放，而不是进入阻塞状态。
+	3. **自旋锁**  
+		当轻量级锁尝试获取锁失败时，JDK可以选择使用自旋锁。自旋锁不会使线程进入阻塞状态，而是一直尝试获取锁，通常在短时间内完成。这对于低竞争锁非常有用。
+	4. **适应性自旋**  
+		JDK中的锁可以根据历史性能数据来调整自旋等待的次数，以达到更好的性能。
 	这些优化措施有助于提高 `synchronized` 的性能，使其在不同的竞争场景中更加高效。但请注意，优化是基于JVM和硬件平台的，因此在不同的环境中表现可能会有所不同。
 - **同步代码块**
 ### lock
