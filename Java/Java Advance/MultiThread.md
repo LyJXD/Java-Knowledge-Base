@@ -132,18 +132,18 @@ public class Test implements Callable<String> {
 - **方法对比**
 	- **`sleep()` 对比 `wait()`**
 		1. `sleep()` 是Thread类的静态本地方法；`wait()` 是Object类的成员本地方法。
-		2. JDK1.8 后`sleep()`  `wait()` 均需要捕获 `InterruptedException` 异常。
-		3. `sleep()` 方法可以在任何地方使用；wait() 方法则只能在同步方法或同步代码块中使用。
-		4. sleep() 会休眠当前线程指定时间，释放 CPU 资源，不释放对象锁，休眠时间到自动苏醒继续执行；wait() 方法放弃持有的对象锁，进入等待队列，当该对象被调用 notify() / notifyAll() 方法后才有机会竞争获取对象锁，进入运行状态。
-	- **`sleep()` 对比 `yield()`**
-		1. sleep() 方法给其他线程运行机会时不考虑线程的优先级；yield() 方法只会给相同优先级或更高优先级的线程运行的机会。
-		2. sleep() 方法声明抛出 InterruptedException；yield() 方法没有声明抛出异常。
-		3. 线程执行 sleep() 方法后进入超时等待状态；线程执行 yield() 方法转入就绪状态，可能马上又得得到执行。
-		4. sleep() 方法需要指定时间参数；yield() 方法出让 CPU 的执行权时间由 JVM 控制。
+		2. JDK1.8 后`sleep()` 和 `wait()` 均需要捕获 `InterruptedException` 异常。
+		3. `sleep()` 可以在任何地方使用；`wait()` 则只能在同步方法或同步代码块中使用。
+		4. `sleep()` 会休眠当前线程指定时间，释放CPU资源，不释放对象锁，休眠时间到自动苏醒继续执行；`wait()` 方法放弃持有的对象锁，进入等待队列，当该对象被调用 `notify()` 或 `notifyAll()` 方法后才有机会竞争获取对象锁，进入运行状态。
 	- **`sleep()` 对比 `join()`**
-		1. JDK1.8 sleep() join() 均需要捕获 InterruptedException 异常。
-		2. sleep()是Thread的静态本地方法，join()是Thread的普通方法。
-		3. sleep()不会释放锁资源，join()底层是wait方法，会释放锁。
+		1. JDK1.8 `sleep()` 和 `join()` 均需要捕获 `InterruptedException` 异常。
+		2. `sleep()` 是Thread的静态本地方法，`join()` 是Thread的普通方法。
+		3. `sleep()` 不会释放锁资源，`join()` 底层是 `wait()` 方法，会释放锁。
+	- **`sleep()` 对比 `yield()`**
+		1. `sleep()` 给其他线程运行机会时不考虑线程的优先级；`yield()` 只会给相同优先级或更高优先级的线程运行的机会。
+		2. `sleep()` 声明抛出 `InterruptedException`；`yield()` 没有声明抛出异常。
+		3. 线程执行 `sleep()` 后进入超时等待状态；线程执行 `yield()` 转入就绪状态，可能马上又得得到执行。
+		4. `sleep()` 需要指定时间参数；`yield()` 让出CPU的执行权时间由JVM控制。
 - **常用方法示例**
 ```java
 class mythresd extends Thread{
