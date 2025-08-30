@@ -15,6 +15,7 @@ Map提供了一种基于键进行查找和操作的数据结构。Map接口的�
 public class MapLearn {  
     public static void main(String[] args) {  
         Map<String, Integer> map = new HashMap<>();  
+        // put方法若添加已有元素则返回上一个键对应的值，否则返回null
         map.put("张三", 18);  
         map.put("李四", 19);  
         map.put("王五", 17);  
@@ -40,7 +41,8 @@ public class MapLearn {
         System.out.println("--------------------");  
         // 使用匿名内部类，lambda表达式  
         map.forEach((new BiConsumer<String, Integer>() {  
-            @Override            public void accept(String key, Integer value) {  
+            @Override            
+            public void accept(String key, Integer value) {  
                 System.out.println("键：" + key + " 值：" + value);  
             }  
         }));  
