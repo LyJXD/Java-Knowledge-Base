@@ -39,13 +39,14 @@ public class MapLearn {
             System.out.println("键：" + entry.getKey() + " 值：" + entry.getValue());  
         }  
         System.out.println("--------------------");  
-        // 使用匿名内部类，lambda表达式  
+        // 使用匿名内部类
         map.forEach((new BiConsumer<String, Integer>() {  
             @Override            
             public void accept(String key, Integer value) {  
                 System.out.println("键：" + key + " 值：" + value);  
             }  
         }));  
+        // 使用lambda表达式  
         map.forEach((key, value) -> System.out.println("键：" + key + " 值：" + value)); 
     }  
 }
