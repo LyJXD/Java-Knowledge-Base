@@ -24,7 +24,7 @@ public class MapLearn {
         System.out.println(map.isEmpty());  
         System.out.println(map.get("张三"));  
         System.out.println(map.containsKey("张三"));  
-  
+        
         // 遍历  
         // 获取所有的键，通过遍历键获取值  
         Set<String> keys = map.keySet();  
