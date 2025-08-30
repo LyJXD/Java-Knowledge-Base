@@ -144,7 +144,8 @@ public class Test implements Callable<String> {
 		2. `sleep()` 声明抛出 `InterruptedException`；`yield()` 没有声明抛出异常。
 		3. 线程执行 `sleep()` 后进入超时等待状态；线程执行 `yield()` 后转入就绪状态，可能马上又被分配时间片执行。
 		4. `sleep()` 需要指定时间参数；`yield()` 让出CPU的执行权时间由[[JVM]]控制。
-- **常用方法示例**
+### 常用方法使用
+- **示例**
 ```java
 class mythresd extends Thread {
     @Override

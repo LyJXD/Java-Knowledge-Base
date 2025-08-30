@@ -16,7 +16,7 @@ List是一种常用的集合类型，它可以存储任意类型的对象，也�
 	3. 当数组满时，`ArrayList` 会将其容量增加到原来的 1.5 倍
 	4. `ArrayList` 是线程不安全的，没有 `synchronized` 关键字修饰。
 	5. jdk8的 `ArrayList` 刚开始创建是空数组，只有添加数据的时候才会进行加入容量默认10。
-### 常用方法
+### 常用方法使用
 - **示例**
 ```java
 public class ArrayListExample {
@@ -76,7 +76,7 @@ public class ArrayListExample {
 	1. 链表的大小是动态变化的，不需要预先分配固定大小的内存。
 	2. 在链表中间进行插入和删除操作的时间复杂度为O(1)。
 	3. 访问链表中任意位置的元素需要从头开始遍历，时间复杂度为O(n)。
-### 常用方法
+### 常用方法使用
 - **示例**
 ```java
 public class LinkedListExample {
