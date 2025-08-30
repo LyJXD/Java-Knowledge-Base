@@ -237,3 +237,25 @@ public class Test {
 
 ## 线程池
 ![[线程池.png]]
+```java
+// 1.核心线程数  
+// 2.最大线程数  
+// 3.等待时间 线程销毁的等待时间  
+// 4.时间单位  
+// 5.阻塞队列  
+// 6.线程工厂  
+// 7.拒绝策略 达到最大线程数同时阻塞队列已满  
+ThreadPoolExecutor pool = new ThreadPoolExecutor(  
+        3,  
+        5,  
+        2,  
+        TimeUnit.SECONDS,  
+        new ArrayBlockingQueue<>(2),  
+        Executors.defaultThreadFactory(),  
+        // AbortPolicy 丢弃并抛出异常  
+        // CallerRunsPolicy 交给主线程执行（main）  
+        // DiscardPolicy 直接丢弃不抛异常  
+        // DiscardOldestPolicy 丢弃队列中等待最久的任务  
+        new ThreadPoolExecutor.CallerRunsPolicy()  
+);
+```
