@@ -233,10 +233,15 @@ public class Test {
 	4. **适应性自旋**  
 		JDK中的锁可以根据历史性能数据来调整自旋等待的次数，以达到更好的性能。
 	这些优化措施有助于提高 `synchronized` 的性能，使其在不同的竞争场景中更加高效。但请注意，优化是基于JVM和硬件平台的，因此在不同的环境中表现可能会有所不同。
+- **同步方法**
+	1. **修饰非静态方法**
+		当您在实例的非静态方法上使用`synchronized`关键字时，它会将该方法变成同步方法，相当于对当前实例对象（`this`）加锁，`this`作为[对象监视器](https://zhida.zhihu.com/search?content_id=236098869&content_type=Article&match_order=1&q=%E5%AF%B9%E8%B1%A1%E7%9B%91%E8%A7%86%E5%99%A8&zd_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJ6aGlkYV9zZXJ2ZXIiLCJleHAiOjE3NTY3OTM5MDIsInEiOiLlr7nosaHnm5Hop4blmagiLCJ6aGlkYV9zb3VyY2UiOiJlbnRpdHkiLCJjb250ZW50X2lkIjoyMzYwOTg4NjksImNvbnRlbnRfdHlwZSI6IkFydGljbGUiLCJtYXRjaF9vcmRlciI6MSwiemRfdG9rZW4iOm51bGx9.Mx7VlX-Z9qMkxUuIu7CW-XtSVY9tLoZnN_CIaZCyxuM&zhida_source=entity)。这意味着只有一个线程可以同时执行该实例方法，以确保对该实例的互斥访问。 当前类会创建多个实例对象，`synchronized`独立的控制每个实例对象的同步。
+	2. **修饰静态方法**
+		在静态方法上使用`synchronized`关键字时，它会将该方法变为同步静态方法，相当于对当前类的Class对象加锁，当前类的Class对象作为对象监视器。这意味着只有一个线程可以同时执行该静态方法，以确保对该类的互斥访问。 当前类会创建多个实例对象，所以实例对应同一个静态方法，所以`synchronized`控制所以实例对象的同步。锁定的是类的 Class 对象，因此它会阻止不同实例以及静态方法之间的并发执行，因为它们共享相同的 Class 对象。
 - **同步代码块**
 	可以使用`synchronized`关键字来创建同步代码块，这样可以指定要加锁的对象，括号中括起来的对象就是对象监视器。这允许更细粒度的控制，可以选择对某个特定对象进行同步，而不是整个方法或类。
-- **同步方法**
-	
+	1. **`synchronized(class)`**
+	2. **`synchronized(this)`**
 ### lock
 
 ## 线程池
