@@ -249,7 +249,11 @@ synchronized (锁定对象) {
 }
 ```
 ### lock
-
+Lock 是 java.util.concurrent.locks 包下的接口，Lock 实现提供了比 `synchronized` 关键字更多的功能，更广泛的锁操作，它能以更优雅的方式处理线程同步问题。
+1. Lock和ReadWriteLock是两大锁的根接口，Lock代表实现类是ReentrantLock（可重入锁），ReadWriteLock（读写锁）的代表实现类是ReentrantReadWriteLock。
+2. Lock 接口支持那些语义不同（重入、公平等）的锁规则，可以在非阻塞式结构的上下文（包括 hand-over-hand 和锁重排算法）中使用这些规则。
+3. ReadWriteLock 接口以类似方式定义了一些读取者可以共享而写入者独占的锁。此包只提供了一个实现 ReentrantReadWriteLock。
+4. Lock是可重入锁，可中断锁，可以实现公平锁和读写锁，写锁为排它锁，读锁为共享锁。ReentrantLock也是一种排他锁。 
 
 ## 线程池
 ![[线程池.png]]
