@@ -250,6 +250,7 @@ synchronized (锁定对象) {
 ```
 ### lock
 
+
 ## 线程池
 ![[线程池.png]]
 ```java
