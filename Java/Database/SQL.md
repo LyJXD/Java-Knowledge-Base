@@ -102,8 +102,14 @@ INSERT INTO 表名[所有列名] VALUES(值1,值2,...),(值1,值2,...),...;
 ```
 - **修改数据（UPDATE）**
 ```mysql
-
+UPDATE 表名 SET 列名1=值1,[列名2=值2],[...][WHERE 条件];
+-- 注意：如果不使用WHERE条件，会将表中所有数据进行修改！
+```
+- **删除数据（DELETE）**
+```mysql
+DELETE FROM 表名 [WHERE 条件];
+-- 注意：如果不使用WHERE条件，会将表中所有的数据删除！
 ```
 ## DQL
-
+**DQL(Data Query Language)** 数据查询语言，用来查询数据库中表的数据。
 ## DCL
