@@ -34,7 +34,7 @@ set.add("b");
 System.out.println(set); // 输出顺序固定：[c, a, b]
 ```
 ## TreeSet
-`TreeSet` 是一个底层基于 `TreeMap` 实现的有序集合，存储的元素必须实现 `Comparable` 接口，或者构造时传入 `Comparator` ，**即元素必须可排序**。
+`TreeSet` 是一个底层基于 `TreeMap` 实现的集合，存储的元素必须实现 `Comparable` 接口，或者构造时传入 `Comparator` ，**即元素必须可排序**。
 - **特点**
 	1. 插入和删除效率较低。
 	2. 自动排序，无索引，自动去重。
