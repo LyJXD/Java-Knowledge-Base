@@ -35,7 +35,7 @@ DROP DATABASE IF EXISTS 数据库名称;
 USE 数据库名称;
 ```
 ### 操作表
-- **创建（CREATE）**
+- **创建(CREATE)**
 ```mysql
 CREATE TABLE 表名(
 	字段名1 数据类型,
@@ -44,7 +44,7 @@ CREATE TABLE 表名(
 	字段名n 数据类型  -- 最后一行不能加逗号！
 );
 ```
-- **查询（RETRIEVE，检索）**
+- **查询(RETRIEVE，检索)**
 ```mysql
 -- 1.查询当前数据库中所有表的名称
 SHOW TABLES;
@@ -55,7 +55,7 @@ DESC 表名;
 -- 3.查看建表语句（还能查看到建表时没写的默认参数）
 show create table 表名;
 ```
-- **修改（ALTER）**
+- **修改(ALTER)**
 ```mysql
 -- 1.修改表名
 ALTER TABLE 表名 RENAME TO 新的表名;
@@ -72,7 +72,7 @@ ALTER TABLE 表名 CHANGE 旧列名 新列名 新数据类型 [ COMMENT 注释 ]
 -- 5.删除列（字段）
 ALTER TABLE 表名 DROP 列名;
 ```
-- **删除（DROP）**
+- **删除(DROP)**
 ```mysql
 -- 1.普通删除（删除不存在的表会报错）
 DROP TABLE 表名;
@@ -85,7 +85,7 @@ TRUNCATE TABLE 表名;
 ```
 ## DML
 **DML(Data Manipulation Language)** 数据操作语言，用来对数据库库中表的数据进行增、删、改。
-- **添加数据（INSERT）**
+- **添加数据(INSERT)**
 ```mysql
 -- 1.给指定列添加数据
 INSERT INTO 表名(列名1,[列名2],[...) VALUES(值1,[值2],[...]); -- 值1对应列名1,...
@@ -100,12 +100,12 @@ INSERT INTO 表名(列名1,[列名2],[...]) VALUES(值1,值2,...),[(值1,值2,..
 -- 4.批量给全部列添加数据（相当于添加新的多行）
 INSERT INTO 表名[所有列名] VALUES(值1,值2,...),(值1,值2,...),...;
 ```
-- **修改数据（UPDATE）**
+- **修改数据(UPDATE)**
 ```mysql
 UPDATE 表名 SET 列名1=值1,[列名2=值2],[...][WHERE 条件];
 -- 注意：如果不使用WHERE条件，会将表中所有数据进行修改！
 ```
-- **删除数据（DELETE）**
+- **删除数据(DELETE)**
 ```mysql
 DELETE FROM 表名 [WHERE 条件];
 -- 注意：如果不使用WHERE条件，会将表中所有的数据删除！
@@ -129,5 +129,55 @@ SELECT name, email FROM users;
 -- 查询orders表中的user_id和amount列
 SELECT user_id, amount FROM orders;
 ```
-### 排序查询（order by）
+### 排序查询(order by)
+- **按年龄排序**
+```mysql
+-- 按age列升序排序查询users表中的所有记录
+SELECT * FROM users ORDER BY age ASC;
+
+-- 按age列降序排序查询users表中的所有记录
+SELECT * FROM users ORDER BY age DESC;
+
+-- 按amount列升序排序查询orders表中的所有记录
+SELECT * FROM orders ORDER BY amount ASC;
+```
+### 聚合函数
+- **计算总数**
+```mysql
+-- 计算users表中的总记录数
+SELECT COUNT(*) FROM users;
+
+-- 计算orders表中的总记录数
+SELECT COUNT(*) FROM orders;
+```
+- **计算平均值**
+```mysql
+-- 计算users表中age列的平均值
+SELECT AVG(age) FROM users;
+
+-- 计算orders表中amount列的平均值
+SELECT AVG(amount) FROM orders;
+```
+- **计算总和**
+```mysql
+-- 计算orders表中amount列的总和
+SELECT SUM(amount) FROM orders;
+```
+- **计算最大值和最小值**
+```mysql
+-- 计算users表中age列的最大值
+SELECT MAX(age) FROM users;
+
+-- 计算orders表中amount列的最小值
+SELECT MIN(amount) FROM orders;
+```
+### 分组查询(group by)
+- **按年龄分组**
+```mysql
+-- 按age分组并统计每组的人数
+SELECT age, COUNT(*) FROM users GROUP BY age;
+
+-- 按user_id分组并统计每组的总订单金额
+SELECT user_id, SUM(amount) FROM orders GROUP BY user_id;
+```
 ## DCL
