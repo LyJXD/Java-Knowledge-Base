@@ -112,4 +112,22 @@ DELETE FROM 表名 [WHERE 条件];
 ```
 ## DQL
 **DQL(Data Query Language)** 数据查询语言，用来查询数据库中表的数据。
+### 基础关键字
+- **查询所有记录**
+```mysql
+-- 查询users表中的所有记录
+SELECT * FROM users;
+
+-- 查询orders表中的所有记录
+SELECT * FROM orders;
+```
+- **查询特定列**
+```mysql
+-- 查询users表中的name和email列
+SELECT name, email FROM users;
+
+-- 查询orders表中的user_id和amount列
+SELECT user_id, amount FROM orders;
+```
+### 排序查询（order by）
 ## DCL
