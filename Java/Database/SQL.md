@@ -241,5 +241,52 @@ RIGHT JOIN orders ON users.id = orders.user_id;
 ```
 ### 子查询
 - **子查询的结果是单行单列的**
+```mysql
+-- 查询年龄最大的用户
+SELECT * 
+FROM users 
+WHERE age = (SELECT MAX(age) FROM users);
+
+-- 查询订单金额最大的订单的用户信息
+SELECT * 
+FROM users 
+WHERE id = (SELECT user_id FROM orders WHERE amount = (SELECT MAX(amount) FROM orders));
+```
 - **子查询的结果是多行单列的**
+```mysql
+-- 查询所有年龄大于30岁的用户
+SELECT * 
+FROM users 
+WHERE age > (SELECT age FROM users WHERE age = 30);
+
+-- 查询所有有订单的用户信息
+SELECT * 
+FROM users 
+WHERE id IN (SELECT user_id FROM orders);
+```
 ## DCL
+**DCL(Data Control Language)** 数据控制语言，用于权限管理
+- **查询权限**
+```mysql
+-- 查询当前用户的权限
+SHOW GRANTS FOR CURRENT_USER;
+
+-- 查询名为'username'用户的权限
+SHOW GRANTS FOR 'username'@'localhost';
+```
+- **授予权限**
+```mysql
+-- 授予'username'用户对test_db数据库的所有权限
+GRANT ALL PRIVILEGES ON test_db.* TO 'username'@'localhost';
+
+-- 授予'admin'用户对所有数据库的SELECT和INSERT权限
+GRANT SELECT, INSERT ON *.* TO 'admin'@'localhost';
+```
+- **撤销权限**
+```mysql
+-- 撤销'username'用户对test_db数据库的所有权限
+REVOKE ALL PRIVILEGES ON test_db.* FROM 'username'@'localhost';
+
+-- 撤销'admin'用户对所有数据库的SELECT和INSERT权限
+REVOKE SELECT, INSERT ON *.* FROM 'admin'@'localhost';
+```
