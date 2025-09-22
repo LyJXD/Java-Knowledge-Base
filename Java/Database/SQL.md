@@ -202,4 +202,44 @@ SELECT users.name, orders.amount
 FROM users, orders 
 WHERE users.id = orders.user_id;
 ```
+- **显式内连接**
+```mysql
+-- 使用INNER JOIN显式连接users和orders表
+SELECT users.name, orders.amount 
+FROM users 
+INNER JOIN orders ON users.id = orders.user_id;
+
+-- 查询所有用户及其订单信息
+SELECT users.name, orders.amount 
+FROM users 
+INNER JOIN orders ON users.id = orders.user_id;
+```
+### 外连接查询
+- **左外连接**
+```mysql
+-- 查询左表（users）所有数据以及其交集部分
+SELECT users.name, orders.amount 
+FROM users 
+LEFT JOIN orders ON users.id = orders.user_id;
+
+-- 查询所有用户及其订单信息，包括没有订单的用户
+SELECT users.name, orders.amount 
+FROM users 
+LEFT JOIN orders ON users.id = orders.user_id;
+```
+- **右外连接**
+```mysql
+-- 查询右表（orders）所有数据以及其交集部分
+SELECT users.name, orders.amount 
+FROM users 
+RIGHT JOIN orders ON users.id = orders.user_id;
+
+-- 查询所有订单及其对应的用户信息，包括没有用户信息的订单
+SELECT users.name, orders.amount 
+FROM users 
+RIGHT JOIN orders ON users.id = orders.user_id;
+```
+### 子查询
+- **子查询的结果是单行单列的**
+- **子查询的结果是多行单列的**
 ## DCL
