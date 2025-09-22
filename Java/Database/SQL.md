@@ -180,4 +180,26 @@ SELECT age, COUNT(*) FROM users GROUP BY age;
 -- 按user_id分组并统计每组的总订单金额
 SELECT user_id, SUM(amount) FROM orders GROUP BY user_id;
 ```
+### 分页查询
+- **分页查询**
+```mysql
+-- 查询users表中从第2页开始的10条记录（假设每页10条记录）
+SELECT * FROM users LIMIT 10 OFFSET 10;
+
+-- 查询orders表中从第3页开始的5条记录（假设每页5条记录）
+SELECT * FROM orders LIMIT 5 OFFSET 10;
+```
+### 内连接查询
+- **隐式内连接**
+```mysql
+-- 使用where条件消除无用数据，连接users和orders表
+SELECT users.name, orders.amount 
+FROM users, orders 
+WHERE users.id = orders.user_id;
+
+-- 查询所有用户及其订单信息
+SELECT users.name, orders.amount 
+FROM users, orders 
+WHERE users.id = orders.user_id;
+```
 ## DCL
